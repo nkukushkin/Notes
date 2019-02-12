@@ -14,7 +14,9 @@ class MemoryNoteStorage: NoteStorage {
     }
 }
 
-
+#warning("TODO: Remove samples")
 private let sampleNotes: Set<Note> = [
-    Note(icon: "OK", title: "OK", body: "OK")
+    Note(icon: "😃", title: "Title", body: "Body"),
+    Note(icon: "👻", title: "Title", body: "Body"),
+    Note(icon: "💩", title: "Title", body: "Body")
 ]
