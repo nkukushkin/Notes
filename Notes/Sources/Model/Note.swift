@@ -1,13 +1,28 @@
 import Foundation
 
 struct Note {
-    let icon: String
-    let title: String
-    let body: String
+    var icon: String
+    var title: String
+    var body: String
 
-    let id: UUID = UUID()
-    let dateOfCreation: Date = Date()
-    let dateOfLastModification: Date = Date()
+    var id: UUID
+    var dateOfCreation: Date
+    var dateOfLastModification: Date
+
+    init(
+        icon: String, title: String, body: String,
+        id: UUID = UUID(),
+        dateOfCreation: Date = Date(),
+        dateOfLastModification: Date = Date()
+    ) {
+        self.icon = icon
+        self.title = title
+        self.body = body
+
+        self.id = id
+        self.dateOfCreation = dateOfCreation
+        self.dateOfLastModification = dateOfLastModification
+    }
 }
 
 // MARK: - Equatable
