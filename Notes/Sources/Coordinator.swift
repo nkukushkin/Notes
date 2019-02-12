@@ -1,6 +1,6 @@
 import UIKit
 
-#warning("Write documentation!")
+#warning("TODO: Documentation")
 class Coordinator: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
