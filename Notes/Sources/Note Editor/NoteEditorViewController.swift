@@ -4,13 +4,11 @@ class NoteEditorIconAndTitleCell: UITableViewCell {
 
 }
 
-class NoteEditorBodyCell: UITableViewCell {
 
-}
 
 class NoteEditorViewController: UITableViewController {
 
-    var note: Note
+    private var note: Note
 
     private enum Constants {
         static let bodyCellIdentifier = "bodyEditorCell"

@@ -5,4 +5,3 @@ protocol NoteStorage {
     func delete(note: Note)
     func loadAllNotes() -> Set<Note>
 }
-
