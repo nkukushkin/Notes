@@ -2,15 +2,17 @@ import UIKit
 
 class NoteListCoordinator: Coordinator {
 
-    private lazy var rootNavigationController = UINavigationController()
+    private lazy var navController = UINavigationController()
 
     private let noteStorage: NoteStorage
 
-    override func loadView() {
-        super.loadView()
-        embedChild(rootNavigationController, in: view)
-        showNoteListViewController()
-    }
+    // MARK: Note List View Controller
+
+    private lazy var newNoteBarButtonItem = UIBarButtonItem(
+        barButtonSystemItem: .add,
+        target: self,
+        action: #selector(showNewNoteCoordinator)
+    )
 
     private func showNoteListViewController() {
         let notes = noteStorage.loadAllNotes()
@@ -19,11 +21,28 @@ class NoteListCoordinator: Coordinator {
         })
         let noteListViewController = NoteListViewController(notes: sortedNotes)
         noteListViewController.navigationItem.title = LocalizedStrings.noteListNavigationTitle
+        noteListViewController.navigationItem.rightBarButtonItem = newNoteBarButtonItem
 
-        rootNavigationController.pushViewController(noteListViewController, animated: true)
+        navController.pushViewController(noteListViewController, animated: true)
     }
 
-    // MARK: - Initialization
+    // MARK: New Note Coordinator
+
+    @objc
+    private func showNewNoteCoordinator() {
+        let newNoteCoordinator = NewNoteCoordinator(noteStorage: noteStorage)
+        present(newNoteCoordinator, animated: true)
+    }
+
+    // MARK: Lifecycle
+
+    override func loadView() {
+        super.loadView()
+        embedChild(navController, in: view)
+        showNoteListViewController()
+    }
+
+    // MARK: Initialization
 
     init(noteStorage: NoteStorage) {
         self.noteStorage = noteStorage
