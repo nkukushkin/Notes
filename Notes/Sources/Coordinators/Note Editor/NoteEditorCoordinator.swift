@@ -2,7 +2,11 @@ import UIKit
 
 class NoteEditorCoordinator: Coordinator {
 
-    private(set) var note: Note
+    private(set) var note: Note {
+        didSet {
+            noteEditorViewController.note = note
+        }
+    }
 
     // MARK: NoteEditorViewController
 
@@ -28,8 +32,9 @@ class NoteEditorCoordinator: Coordinator {
 
         emojiPickerViewController.title = note.icon
         emojiPickerViewController.didPickEmojiHandler = { [weak self] emoji in
-            print("picked emoji \(emoji)")
-            self?.navigationController?.popViewController(animated: true)
+            guard let self = self else { return }
+            self.note.icon = emoji
+            self.navigationController?.popViewController(animated: true)
         }
 
         navigationController?.pushViewController(emojiPickerViewController, animated: true)

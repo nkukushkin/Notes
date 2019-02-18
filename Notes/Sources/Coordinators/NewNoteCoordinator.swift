@@ -3,7 +3,7 @@ import UIKit
 class NewNoteCoordinator: Coordinator {
     private lazy var rootNavigationController = UINavigationController()
 
-    var noteCreatedHandler: ((Note) -> Void)?
+    var didCreateNoteHandler: ((Note) -> Void)?
     var cancelHandler: (() -> Void)?
 
     // MARK: Actions
@@ -11,7 +11,7 @@ class NewNoteCoordinator: Coordinator {
     @objc
     private func done() {
         let note = noteEditorCoordinator.note
-        noteCreatedHandler?(note)
+        didCreateNoteHandler?(note)
     }
 
     @objc
@@ -21,22 +21,26 @@ class NewNoteCoordinator: Coordinator {
 
     // MARK: Note Editor Coordinator
 
+    private lazy var doneBarButtonItem = UIBarButtonItem(
+        barButtonSystemItem: .done,
+        target: self, action: #selector(done)
+    )
+
+    private lazy var cancelBarButtonItem = UIBarButtonItem(
+        barButtonSystemItem: .cancel,
+        target: self, action: #selector(cancel)
+    )
+
     private weak var noteEditorCoordinator: NoteEditorCoordinator!
 
-    private func showNoteEditorViewController() {
+    private func showNoteEditorCoordinator() {
         let newNote = Note(icon: "", title: "", body: "")
         let noteEditorCoordinator = NoteEditorCoordinator(note: newNote)
 
-        let navigationItem = noteEditorCoordinator.navigationItem
-        navigationItem.title = title
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .cancel,
-            target: self, action: #selector(cancel)
-        )
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self, action: #selector(done)
-        )
+        let noteEditorNavigationItem = noteEditorCoordinator.navigationItem
+        noteEditorNavigationItem.title = title
+        noteEditorNavigationItem.leftBarButtonItem = cancelBarButtonItem
+        noteEditorNavigationItem.rightBarButtonItem = doneBarButtonItem
 
         self.noteEditorCoordinator = noteEditorCoordinator
         rootNavigationController.pushViewController(noteEditorCoordinator, animated: false)
@@ -47,7 +51,7 @@ class NewNoteCoordinator: Coordinator {
     override func loadView() {
         super.loadView()
         embedChild(rootNavigationController, in: view)
-        showNoteEditorViewController()
+        showNoteEditorCoordinator()
     }
 }
 

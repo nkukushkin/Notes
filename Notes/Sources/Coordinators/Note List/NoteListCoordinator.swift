@@ -36,7 +36,7 @@ class NoteListCoordinator: Coordinator {
     private func showNewNoteCoordinator() {
         let newNoteCoordinator = NewNoteCoordinator()
 
-        newNoteCoordinator.noteCreatedHandler = { [weak self, weak newNoteCoordinator] note in
+        newNoteCoordinator.didCreateNoteHandler = { [weak self, weak newNoteCoordinator] note in
             self?.noteStorage.save(note: note)
             newNoteCoordinator?.dismiss(animated: true)
         }

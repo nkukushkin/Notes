@@ -38,7 +38,11 @@ class NoteEditorBodyTextView: EmbeddableTextView {
 
 class NoteEditorViewController: UIViewController {
 
-    let note: Note
+    var note: Note {
+        didSet {
+            updateUserInterface()
+        }
+    }
 
     var emojiIconTappedHandler: (() -> Void)?
 
