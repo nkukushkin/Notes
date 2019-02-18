@@ -5,8 +5,11 @@ class NoteEditorCoordinator: Coordinator {
     private(set) var note: Note {
         didSet {
             noteEditorViewController.note = note
+            didChangeNoteHandler?(note)
         }
     }
+
+    var didChangeNoteHandler: ((Note) -> Void)?
 
     // MARK: NoteEditorViewController
 

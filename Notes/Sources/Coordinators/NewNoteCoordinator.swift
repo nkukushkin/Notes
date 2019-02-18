@@ -23,12 +23,14 @@ class NewNoteCoordinator: Coordinator {
 
     private lazy var doneBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .done,
-        target: self, action: #selector(done)
+        target: self,
+        action: #selector(done)
     )
 
     private lazy var cancelBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .cancel,
-        target: self, action: #selector(cancel)
+        target: self,
+        action: #selector(cancel)
     )
 
     private weak var noteEditorCoordinator: NoteEditorCoordinator!
@@ -38,7 +40,7 @@ class NewNoteCoordinator: Coordinator {
         let noteEditorCoordinator = NoteEditorCoordinator(note: newNote)
 
         let noteEditorNavigationItem = noteEditorCoordinator.navigationItem
-        noteEditorNavigationItem.title = title
+        noteEditorNavigationItem.title = LocalizedStrings.newNoteEditorTitle
         noteEditorNavigationItem.leftBarButtonItem = cancelBarButtonItem
         noteEditorNavigationItem.rightBarButtonItem = doneBarButtonItem
 
@@ -58,7 +60,7 @@ class NewNoteCoordinator: Coordinator {
 // MARK: - Localized Strings
 
 private enum LocalizedStrings {
-    static var title: String {
+    static var newNoteEditorTitle: String {
         return NSLocalizedString(
             "New Note",
             comment: "Navigation bar title for the screen where user edits a new note."

@@ -36,12 +36,12 @@ class NoteListCoordinator: Coordinator {
     private func showNewNoteCoordinator() {
         let newNoteCoordinator = NewNoteCoordinator()
 
-        newNoteCoordinator.didCreateNoteHandler = { [weak self, weak newNoteCoordinator] note in
-            self?.noteStorage.save(note: note)
-            newNoteCoordinator?.dismiss(animated: true)
+        newNoteCoordinator.didCreateNoteHandler = { [unowned noteStorage, unowned newNoteCoordinator] note in
+            noteStorage.save(note: note)
+            newNoteCoordinator.dismiss(animated: true)
         }
-        newNoteCoordinator.cancelHandler = { [weak newNoteCoordinator] in
-            newNoteCoordinator?.dismiss(animated: true)
+        newNoteCoordinator.cancelHandler = { [unowned newNoteCoordinator] in
+            newNoteCoordinator.dismiss(animated: true)
         }
 
         present(newNoteCoordinator, animated: true)
@@ -59,7 +59,13 @@ class NoteListCoordinator: Coordinator {
 
     private func showNoteEditorCoordinator(for note: Note) {
         let noteEditorCoordinator = NoteEditorCoordinator(note: note)
+
         noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteNoteBarButtonItem
+        noteEditorCoordinator.didChangeNoteHandler = { [unowned noteStorage] note in
+            // This is called on every character change in the editor.
+            noteStorage.save(note: note)
+        }
+
         rootNavigationController.pushViewController(noteEditorCoordinator, animated: true)
     }
 
