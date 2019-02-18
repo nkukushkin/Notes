@@ -1,10 +1,7 @@
 import UIKit
 
 class NoteListCoordinator: Coordinator {
-    private lazy var _navigationController = UINavigationController()
-    override var navigationController: UINavigationController! {
-        return _navigationController
-    }
+    private lazy var rootNavigationController = UINavigationController()
 
     private let noteStorage: NoteStorage
 
@@ -30,14 +27,23 @@ class NoteListCoordinator: Coordinator {
         noteListViewController.navigationItem.rightBarButtonItem = newNoteBarButtonItem
 
         self.noteListViewController = noteListViewController
-        navigationController.pushViewController(noteListViewController, animated: true)
+        rootNavigationController.pushViewController(noteListViewController, animated: true)
     }
 
     // MARK: New Note Coordinator
 
     @objc
     private func showNewNoteCoordinator() {
-        let newNoteCoordinator = NewNoteCoordinator(noteStorage: noteStorage)
+        let newNoteCoordinator = NewNoteCoordinator()
+
+        newNoteCoordinator.noteCreatedHandler = { [weak self, weak newNoteCoordinator] note in
+            self?.noteStorage.save(note: note)
+            newNoteCoordinator?.dismiss(animated: true)
+        }
+        newNoteCoordinator.cancelHandler = { [weak newNoteCoordinator] in
+            newNoteCoordinator?.dismiss(animated: true)
+        }
+
         present(newNoteCoordinator, animated: true)
     }
 
@@ -54,13 +60,13 @@ class NoteListCoordinator: Coordinator {
     private func showNoteEditorViewController(for note: Note) {
         let noteEditorViewController = NoteEditorViewController(note: note)
         noteEditorViewController.navigationItem.rightBarButtonItem = deleteNoteBarButtonItem
-        navigationController.pushViewController(noteEditorViewController, animated: true)
+        rootNavigationController.pushViewController(noteEditorViewController, animated: true)
     }
 
     @objc
     private func deleteOpenNote() {
         #warning("TODO: Delete note")
-        navigationController.popViewController(animated: true)
+        rootNavigationController.popViewController(animated: true)
     }
 
     // MARK: Observation
@@ -84,7 +90,7 @@ class NoteListCoordinator: Coordinator {
 
     override func loadView() {
         super.loadView()
-        embedChild(navigationController, in: view)
+        embedChild(rootNavigationController, in: view)
         showNoteListViewController()
         startObservingNoteStorage()
     }

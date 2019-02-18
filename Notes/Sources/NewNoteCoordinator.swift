@@ -1,25 +1,22 @@
 import UIKit
 
 class NewNoteCoordinator: Coordinator {
-    private lazy var _navigationController = UINavigationController()
-    override var navigationController: UINavigationController! {
-        return _navigationController
-    }
+    private lazy var rootNavigationController = UINavigationController()
 
-    private let noteStorage: NoteStorage
+    var noteCreatedHandler: ((Note) -> Void)?
+    var cancelHandler: (() -> Void)?
 
     // MARK: Actions
 
     @objc
-    private func saveNote() {
+    private func done() {
         let note = noteEditorViewController.note
-        noteStorage.save(note: note)
-        dismiss(animated: true)
+        noteCreatedHandler?(note)
     }
 
     @objc
     private func cancel() {
-        dismiss(animated: true)
+        cancelHandler?()
     }
 
     // MARK: Note Editor View Controller
@@ -38,26 +35,19 @@ class NewNoteCoordinator: Coordinator {
         )
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .done,
-            target: self, action: #selector(saveNote)
+            target: self, action: #selector(done)
         )
 
         self.noteEditorViewController = noteEditorViewController
-        navigationController.pushViewController(noteEditorViewController, animated: false)
+        rootNavigationController.pushViewController(noteEditorViewController, animated: false)
     }
 
     // MARK: Lifecycle
 
     override func loadView() {
         super.loadView()
-        embedChild(navigationController, in: view)
+        embedChild(rootNavigationController, in: view)
         showNoteEditorViewController()
-    }
-
-    // MARK: Initialization
-
-    init(noteStorage: NoteStorage) {
-        self.noteStorage = noteStorage
-        super.init()
     }
 }
 
