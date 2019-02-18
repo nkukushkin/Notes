@@ -10,7 +10,7 @@ class NewNoteCoordinator: Coordinator {
 
     @objc
     private func done() {
-        let note = noteEditorViewController.note
+        let note = noteEditorCoordinator.note
         noteCreatedHandler?(note)
     }
 
@@ -19,19 +19,15 @@ class NewNoteCoordinator: Coordinator {
         cancelHandler?()
     }
 
-    // MARK: Note Editor View Controller
+    // MARK: Note Editor Coordinator
 
-    private weak var noteEditorViewController: NoteEditorViewController!
+    private weak var noteEditorCoordinator: NoteEditorCoordinator!
 
     private func showNoteEditorViewController() {
         let newNote = Note(icon: "", title: "", body: "")
-        let noteEditorViewController = NoteEditorViewController(note: newNote)
+        let noteEditorCoordinator = NoteEditorCoordinator(note: newNote)
 
-        noteEditorViewController.emojiIconTappedHandler = { [weak self] in
-
-        }
-
-        let navigationItem = noteEditorViewController.navigationItem
+        let navigationItem = noteEditorCoordinator.navigationItem
         navigationItem.title = title
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .cancel,
@@ -42,8 +38,8 @@ class NewNoteCoordinator: Coordinator {
             target: self, action: #selector(done)
         )
 
-        self.noteEditorViewController = noteEditorViewController
-        rootNavigationController.pushViewController(noteEditorViewController, animated: false)
+        self.noteEditorCoordinator = noteEditorCoordinator
+        rootNavigationController.pushViewController(noteEditorCoordinator, animated: false)
     }
 
     // MARK: Lifecycle

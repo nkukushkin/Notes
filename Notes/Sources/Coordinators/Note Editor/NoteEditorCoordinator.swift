@@ -19,11 +19,13 @@ class NoteEditorCoordinator: Coordinator {
     // MARK: EmojiPickerViewController
 
     private func showEmojiPickerViewController() {
-        let emojiPickerViewController = EmojiPickerViewController(emojiSelection: ["🐽","🐷"])
+        #warning("TODO: Proper emoji")
+        let emojiSelection = emojiCategories["people"]!
+        let emojiPickerViewController = EmojiPickerViewController(emojiSelection: emojiSelection)
 
-        emojiPickerViewController.emojiPickedHandler = { [weak emojiPickerViewController] emoji in
+        emojiPickerViewController.didPickEmojiHandler = { [weak self] emoji in
             print("picked emoji \(emoji)")
-            emojiPickerViewController?.dismiss(animated: true)
+            self?.navigationController?.popViewController(animated: true)
         }
 
         navigationController?.pushViewController(emojiPickerViewController, animated: true)
