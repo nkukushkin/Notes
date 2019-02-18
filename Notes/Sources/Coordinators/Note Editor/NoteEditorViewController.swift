@@ -40,6 +40,8 @@ class NoteEditorViewController: UIViewController {
 
     let note: Note
 
+    var emojiIconTappedHandler: (() -> Void)?
+
     private func updateUserInterface() {
         iconButton.setTitle(note.icon, for: .normal)
         titleTextView.text = note.title
@@ -75,6 +77,15 @@ class NoteEditorViewController: UIViewController {
 
         scrollView.embedSubview(mainStackView)
         mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+
+        // Actions
+
+        iconButton.addTarget(self, action: #selector(emojiButtonTapped), for: .touchUpInside)
+    }
+
+    @objc
+    private func emojiButtonTapped() {
+        emojiIconTappedHandler?()
     }
 
     override func viewDidLoad() {

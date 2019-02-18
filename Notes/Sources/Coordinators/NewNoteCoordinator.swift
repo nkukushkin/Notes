@@ -27,6 +27,10 @@ class NewNoteCoordinator: Coordinator {
         let newNote = Note(icon: "", title: "", body: "")
         let noteEditorViewController = NoteEditorViewController(note: newNote)
 
+        noteEditorViewController.emojiIconTappedHandler = { [weak self] in
+
+        }
+
         let navigationItem = noteEditorViewController.navigationItem
         navigationItem.title = title
         navigationItem.leftBarButtonItem = UIBarButtonItem(
