@@ -20,7 +20,7 @@ class NoteListCoordinator: Coordinator {
         let noteListViewController = NoteListViewController(notes: notes)
 
         noteListViewController.noteSelectedHanlder = { [weak self] note in
-            self?.showNoteEditorViewController(for: note)
+            self?.showNoteEditorCoordinator(for: note)
         }
 
         noteListViewController.navigationItem.title = LocalizedStrings.noteListNavigationTitle
@@ -47,7 +47,7 @@ class NoteListCoordinator: Coordinator {
         present(newNoteCoordinator, animated: true)
     }
 
-    // MARK: Note Editor View Controller
+    // MARK: Note Editor Coordinator
 
     private var openNote: Note?
 
@@ -57,10 +57,10 @@ class NoteListCoordinator: Coordinator {
         action: #selector(deleteOpenNote)
     )
 
-    private func showNoteEditorViewController(for note: Note) {
-        let noteEditorViewController = NoteEditorViewController(note: note)
-        noteEditorViewController.navigationItem.rightBarButtonItem = deleteNoteBarButtonItem
-        rootNavigationController.pushViewController(noteEditorViewController, animated: true)
+    private func showNoteEditorCoordinator(for note: Note) {
+        let noteEditorCoordinator = NoteEditorCoordinator(note: note)
+        noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteNoteBarButtonItem
+        rootNavigationController.pushViewController(noteEditorCoordinator, animated: true)
     }
 
     @objc

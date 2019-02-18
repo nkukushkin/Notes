@@ -77,8 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				83B69453221194C90078B959 /* Note List */,
-				83B694572212A4200078B959 /* NewNoteCoordinator.swift */,
 				11A493E6221AE093004B4E01 /* Note Editor */,
+				83B694572212A4200078B959 /* NewNoteCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";

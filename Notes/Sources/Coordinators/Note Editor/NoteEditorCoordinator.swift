@@ -6,6 +6,8 @@ class NoteEditorCoordinator: Coordinator {
 
     // MARK: NoteEditorViewController
 
+    private weak var noteEditorViewController: NoteEditorViewController!
+
     private func showNoteEditorViewController() {
         let noteEditorViewController = NoteEditorViewController(note: note)
 
@@ -13,6 +15,7 @@ class NoteEditorCoordinator: Coordinator {
             self?.showEmojiPickerViewController()
         }
 
+        self.noteEditorViewController = noteEditorViewController
         embedChild(noteEditorViewController, in: view)
     }
 
@@ -23,6 +26,7 @@ class NoteEditorCoordinator: Coordinator {
         let emojiSelection = emojiCategories["people"]!
         let emojiPickerViewController = EmojiPickerViewController(emojiSelection: emojiSelection)
 
+        emojiPickerViewController.title = note.icon
         emojiPickerViewController.didPickEmojiHandler = { [weak self] emoji in
             print("picked emoji \(emoji)")
             self?.navigationController?.popViewController(animated: true)
