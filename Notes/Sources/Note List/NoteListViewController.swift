@@ -2,9 +2,42 @@ import UIKit
 
 private let noteCellIdentifier = "NoteCell"
 
+//class NoteListViewModel {
+//
+//    private let noteStorage: NoteStorage
+//
+//    // MARK: Observation
+//
+//    private var noteStorageObservationToken: NoteStorage.ObservationToken?
+//
+//    private func startObservingNoteStorage() {
+//        let observation: NoteStorage.Observation = { _, new in
+//            print("new notes: \(new)")
+//        }
+//        noteStorageObservationToken = noteStorage.addObservation(observation)
+//    }
+//
+//    private func stopObservingNoteStorage() {
+//        guard let token = noteStorageObservationToken else { return }
+//        noteStorage.removeObservation(for: token)
+//    }
+//
+//    // MARK: Lifecycle
+//
+//    init(noteStorage: NoteStorage) {
+//        self.noteStorage = noteStorage
+//    }
+//}
+
 class NoteListViewController: UITableViewController {
 
-    private let notes: [Note]
+    var notes: [Note] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
+    var noteSelectedHanlder: ((Note) -> Void)?
 
     private func registerTableViewCells() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: noteCellIdentifier)
@@ -14,7 +47,7 @@ class NoteListViewController: UITableViewController {
 
     init(notes: [Note]) {
         self.notes = notes
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .plain)
     }
 
     @available(*, unavailable)
@@ -44,7 +77,17 @@ extension NoteListViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: noteCellIdentifier, for: indexPath)
 
         cell.textLabel?.text = "\(note.icon) \(note.title) \(note.body)"
+        cell.accessoryType = .disclosureIndicator
 
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension NoteListViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let note = notes[indexPath.row]
+        noteSelectedHanlder?(note)
     }
 }

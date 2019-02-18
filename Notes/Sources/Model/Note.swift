@@ -1,46 +1,23 @@
 import Foundation
 
 struct Note {
+    let id: UUID
     var icon: String
     var title: String
     var body: String
 
-    var id: UUID
-    var dateOfCreation: Date
-    var dateOfLastModification: Date
-
-    init(
-        icon: String, title: String, body: String,
-        id: UUID = UUID(),
-        dateOfCreation: Date = Date(),
-        dateOfLastModification: Date = Date()
-    ) {
+    init(id: UUID = UUID(), icon: String, title: String, body: String) {
+        self.id = id
         self.icon = icon
         self.title = title
         self.body = body
-
-        self.id = id
-        self.dateOfCreation = dateOfCreation
-        self.dateOfLastModification = dateOfLastModification
     }
 }
 
-// MARK: - Equatable
+// MARK: - Equatable (Identity)
 
 extension Note: Equatable {
     public static func == (lhs: Note, rhs: Note) -> Bool {
         return lhs.id == rhs.id
     }
 }
-
-// MARK: - Hashable
-
-extension Note: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
-// MARK: - Codable
-
-extension Note: Codable {}
