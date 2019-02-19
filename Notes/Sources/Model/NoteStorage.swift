@@ -1,5 +1,5 @@
 class NoteStorage {
-    private(set) var notes: [Note] {
+    private(set) var notes: [Note] = [] {
         didSet {
             runObservations(oldValue: oldValue, newValue: notes)
         }
@@ -14,10 +14,18 @@ class NoteStorage {
         }
     }
 
+    func save(notes: [Note]) {
+        for note in notes { save(note: note) }
+    }
+
     func delete(note: Note) {
         if let existingIndex = notes.firstIndex(of: note) {
             notes.remove(at: existingIndex)
         }
+    }
+
+    func delete(notes: [Note]) {
+        for note in notes { delete(note: note) }
     }
 
     // MARK: Basic Observing
@@ -49,18 +57,4 @@ class NoteStorage {
     func removeObservation(for token: ObservationToken) {
         observations[token] = nil
     }
-
-    // MARK: Initialization
-
-    init() {
-        notes = sampleNotes
-    }
 }
-
-#warning("TODO: Remove samples")
-private let sampleNotes: [Note] = [
-    Note(icon: "😃", title: "Title", body: "Body"),
-    Note(icon: "👻", title: "Title", body: "Body"),
-    Note(icon: "💩", title: "Title", body: "Body")
-]
-

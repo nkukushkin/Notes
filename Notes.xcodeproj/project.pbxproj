@@ -11,6 +11,9 @@
 		11A493E5221AE084004B4E01 /* NoteEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493E4221AE084004B4E01 /* NoteEditorCoordinator.swift */; };
 		11A493EA221AE9B2004B4E01 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */; };
 		11A493EC221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493EB221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift */; };
+		11CE58A3221BF40D003867F1 /* UnstableNoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE58A2221BF40D003867F1 /* UnstableNoteStorage.swift */; };
+		11CE58A5221BF73B003867F1 /* RandomNoteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE58A4221BF73B003867F1 /* RandomNoteGenerator.swift */; };
+		11CE58A7221BFF2E003867F1 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE58A6221BFF2E003867F1 /* TimerController.swift */; };
 		8327F8C12216B0C6004CEE01 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8327F8C02216B0C6004CEE01 /* Observable.swift */; };
 		83B6942D22118C1E0078B959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6942C22118C1E0078B959 /* AppDelegate.swift */; };
 		83B6942F22118C1E0078B959 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6942E22118C1E0078B959 /* NoteListViewController.swift */; };
@@ -33,6 +36,9 @@
 		11A493E4221AE084004B4E01 /* NoteEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorCoordinator.swift; sourceTree = "<group>"; };
 		11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		11A493EB221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewLayout.swift; sourceTree = "<group>"; };
+		11CE58A2221BF40D003867F1 /* UnstableNoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstableNoteStorage.swift; sourceTree = "<group>"; };
+		11CE58A4221BF73B003867F1 /* RandomNoteGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNoteGenerator.swift; sourceTree = "<group>"; };
+		11CE58A6221BFF2E003867F1 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
 		8327F8C02216B0C6004CEE01 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		83B6942922118C1E0078B959 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B6942C22118C1E0078B959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,8 +102,10 @@
 		8327F8BF2216B0B2004CEE01 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				83B6945D2212EC6E0078B959 /* EmbeddableTextView.swift */,
 				83B6944B221194070078B959 /* Coordinator.swift */,
+				11CE58A6221BFF2E003867F1 /* TimerController.swift */,
+				11CE58A4221BF73B003867F1 /* RandomNoteGenerator.swift */,
+				83B6945D2212EC6E0078B959 /* EmbeddableTextView.swift */,
 				8327F8C02216B0C6004CEE01 /* Observable.swift */,
 				83B6944D2211943F0078B959 /* Extensions */,
 			);
@@ -174,6 +182,7 @@
 			children = (
 				83B6944322118CE40078B959 /* Note.swift */,
 				83B6944F2211945A0078B959 /* NoteStorage.swift */,
+				11CE58A2221BF40D003867F1 /* UnstableNoteStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,11 +276,14 @@
 				83B6944A221193AB0078B959 /* UIViewController+Embed.swift in Sources */,
 				83B6942F22118C1E0078B959 /* NoteListViewController.swift in Sources */,
 				83B69462221442270078B959 /* NoteEditorViewController.swift in Sources */,
+				11CE58A5221BF73B003867F1 /* RandomNoteGenerator.swift in Sources */,
 				83B6942D22118C1E0078B959 /* AppDelegate.swift in Sources */,
+				11CE58A3221BF40D003867F1 /* UnstableNoteStorage.swift in Sources */,
 				11A493E5221AE084004B4E01 /* NoteEditorCoordinator.swift in Sources */,
 				11A493EC221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift in Sources */,
 				83B69449221193AB0078B959 /* UIView+Emded.swift in Sources */,
 				83B6945E2212EC6E0078B959 /* EmbeddableTextView.swift in Sources */,
+				11CE58A7221BFF2E003867F1 /* TimerController.swift in Sources */,
 				83B6944422118CE40078B959 /* Note.swift in Sources */,
 				83B694502211945A0078B959 /* NoteStorage.swift in Sources */,
 			);

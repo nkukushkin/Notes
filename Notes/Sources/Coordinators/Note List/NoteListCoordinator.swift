@@ -3,6 +3,14 @@ import UIKit
 class NoteListCoordinator: Coordinator {
     private lazy var rootNavigationController = UINavigationController()
 
+    private enum State {
+        case viewing(noteList: NoteListViewController)
+        case adding(newNote: NewNoteCoordinator)
+        case editing(note: Note, noteEditor: NoteEditorCoordinator)
+    }
+
+    private var state: State? = nil
+
     private let noteStorage: NoteStorage
 
     // MARK: Note List View Controller
@@ -58,6 +66,7 @@ class NoteListCoordinator: Coordinator {
     )
 
     private func showNoteEditorCoordinator(for note: Note) {
+        openNote = note
         let noteEditorCoordinator = NoteEditorCoordinator(note: note)
 
         noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteNoteBarButtonItem
@@ -71,8 +80,8 @@ class NoteListCoordinator: Coordinator {
 
     @objc
     private func deleteOpenNote() {
-        #warning("TODO: Delete note")
-        rootNavigationController.popViewController(animated: true)
+        guard let openNote = openNote else { return }
+        noteStorage.delete(note: openNote)
     }
 
     // MARK: Observation
@@ -81,7 +90,14 @@ class NoteListCoordinator: Coordinator {
 
     private func startObservingNoteStorage() {
         let observation: NoteStorage.Observation = { [weak self] _, newNotes in
-            self?.noteListViewController.notes = newNotes
+            guard let self = self else { return }
+            self.noteListViewController.notes = newNotes
+
+            // Pop to list if note was deleted.
+            if let openNote = self.openNote, !self.noteStorage.notes.contains(openNote) {
+                self.openNote = nil
+                self.rootNavigationController.popToViewController(self.noteListViewController, animated: true)
+            }
         }
         noteStorageObservationToken = noteStorage.addObservation(observation)
     }
