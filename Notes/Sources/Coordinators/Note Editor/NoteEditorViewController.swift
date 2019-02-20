@@ -4,7 +4,6 @@ class NoteEditorIconButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .red
-        setTitle("✅", for: .normal)
         titleLabel?.font = .systemFont(ofSize: 50)
     }
 
@@ -21,7 +20,6 @@ class NoteEditorTitleTextView: EmbeddableTextView {
         preservesSuperviewLayoutMargins = true
         isScrollEnabled = false
         font = .preferredFont(forTextStyle: .title1)
-        text = "Title"
     }
 }
 
@@ -32,22 +30,23 @@ class NoteEditorBodyTextView: EmbeddableTextView {
         preservesSuperviewLayoutMargins = true
         isScrollEnabled = false
         font = .preferredFont(forTextStyle: .body)
-        text = "Body"
     }
 }
 
 class NoteEditorViewController: UIViewController {
 
-    var note: Note {
-        didSet {
-            updateUserInterface()
-        }
+    private(set) var note: Note
+
+    func setNote(_ note: Note) {
+        self.note = note
+        updateUserInterface()
     }
 
-    var emojiIconTappedHandler: (() -> Void)?
+    var didTapEmojiHandler: (() -> Void)?
+    var didChangeNoteHandler: ((Note) -> Void)?
 
     private func updateUserInterface() {
-        iconButton.setTitle(note.icon, for: .normal)
+        iconButton.setTitle(note.emoji, for: .normal)
         titleTextView.text = note.title
         bodyTextView.text = note.body
     }
@@ -82,15 +81,23 @@ class NoteEditorViewController: UIViewController {
         scrollView.embedSubview(mainStackView)
         mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 
-        // Actions
-
-        iconButton.addTarget(self, action: #selector(emojiButtonTapped), for: .touchUpInside)
+        setupActions()
     }
+
+    // MARK: Actions
 
     @objc
     private func emojiButtonTapped() {
-        emojiIconTappedHandler?()
+        didTapEmojiHandler?()
     }
+
+    private func setupActions() {
+        iconButton.addTarget(self, action: #selector(emojiButtonTapped), for: .touchUpInside)
+        titleTextView.delegate = self
+        bodyTextView.delegate = self
+    }
+
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,5 +114,21 @@ class NoteEditorViewController: UIViewController {
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension NoteEditorViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        switch textView {
+        case titleTextView:
+            note.title = textView.text
+        case bodyTextView:
+            note.body = textView.text
+        default:
+            fatalError("Invalid textView: \(textView)!")
+        }
+        didChangeNoteHandler?(note)
     }
 }

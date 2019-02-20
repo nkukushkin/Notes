@@ -5,6 +5,8 @@ class NoteStorage {
         }
     }
 
+    // MARK: Saving
+
     func save(note: Note) {
         if let existingIndex = notes.firstIndex(of: note) {
             notes.remove(at: existingIndex)
@@ -17,6 +19,8 @@ class NoteStorage {
     func save(notes: [Note]) {
         for note in notes { save(note: note) }
     }
+
+    // MARK: Deleting
 
     func delete(note: Note) {
         if let existingIndex = notes.firstIndex(of: note) {

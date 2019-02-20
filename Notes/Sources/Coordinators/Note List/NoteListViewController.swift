@@ -76,7 +76,7 @@ extension NoteListViewController {
         let note = notes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: noteCellIdentifier, for: indexPath)
 
-        cell.textLabel?.text = "\(note.icon) \(note.title) \(note.body)"
+        cell.textLabel?.text = "\(note.emoji) \(note.title) \(note.body)"
         cell.accessoryType = .disclosureIndicator
 
         return cell

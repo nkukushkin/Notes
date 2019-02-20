@@ -13,7 +13,7 @@ let emojiCategories: [String: [String]] = [
 
 class EmojiPickerViewController: UICollectionViewController {
 
-    private let emojiSelection: [String]
+    private let emojis: [String]
 
     var didPickEmojiHandler: ((String) -> Void)?
 
@@ -36,8 +36,8 @@ class EmojiPickerViewController: UICollectionViewController {
 
     // MARK: Initialization
 
-    init(emojiSelection: [String]) {
-        self.emojiSelection = emojiSelection
+    init(emojis: [String]) {
+        self.emojis = emojis
         super.init(collectionViewLayout: EmojiCollectionViewLayout())
     }
 
@@ -51,7 +51,7 @@ class EmojiPickerViewController: UICollectionViewController {
 
 extension EmojiPickerViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return emojiSelection.count
+        return emojis.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,7 +60,7 @@ extension EmojiPickerViewController {
             for: indexPath
         ) as! EmojiCollectionViewCell
 
-        let emoji = emojiSelection[indexPath.item]
+        let emoji = emojis[indexPath.item]
         cell.emoji = emoji
 
         return cell
@@ -71,7 +71,7 @@ extension EmojiPickerViewController {
 
 extension EmojiPickerViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let emoji = emojiSelection[indexPath.item]
+        let emoji = emojis[indexPath.item]
         didPickEmojiHandler?(emoji)
     }
 }

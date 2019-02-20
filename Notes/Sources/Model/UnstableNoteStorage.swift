@@ -2,7 +2,7 @@ import Foundation
 
 class UnstableNoteStorage: NoteStorage {
     private let timer: TimerController
-    private let sampleNoteGenerator: RandomNoteGenerator
+    private let noteGenerator: RandomNoteGenerator
 
     private enum Constants {
         static let maxNotes = 5
@@ -13,7 +13,7 @@ class UnstableNoteStorage: NoteStorage {
 
     private func addRandomNotes() {
         let max = Constants.maxNotes - notes.count
-        let randomNotes = sampleNoteGenerator.generateRandomNotes(quantity: .random(in: 1...max))
+        let randomNotes = noteGenerator.generateNotes(quantity: .random(in: 1...max))
         save(notes: randomNotes)
     }
 
@@ -35,8 +35,8 @@ class UnstableNoteStorage: NoteStorage {
 
     // MARK: Initialization
 
-    init(sampleNoteGenerator: RandomNoteGenerator) {
-        self.sampleNoteGenerator = sampleNoteGenerator
+    init(noteGenerator: RandomNoteGenerator) {
+        self.noteGenerator = noteGenerator
         timer = TimerController(interval: Constants.mutationInterval, repeats: true)
 
         super.init()

@@ -1,7 +1,11 @@
 import UIKit
 
 class NoteListCoordinator: Coordinator {
-    private lazy var rootNavigationController = UINavigationController()
+    private lazy var rootNavigationController: UINavigationController = {
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.prefersLargeTitles = true
+        return navigationController
+    }()
 
     private enum State {
         case viewing(noteList: NoteListViewController)
@@ -70,6 +74,7 @@ class NoteListCoordinator: Coordinator {
         let noteEditorCoordinator = NoteEditorCoordinator(note: note)
 
         noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteNoteBarButtonItem
+        noteEditorCoordinator.navigationItem.largeTitleDisplayMode = .never
         noteEditorCoordinator.didChangeNoteHandler = { [unowned noteStorage] note in
             // This is called on every character change in the editor.
             noteStorage.save(note: note)

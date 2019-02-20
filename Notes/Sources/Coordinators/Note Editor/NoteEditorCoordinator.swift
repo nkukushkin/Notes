@@ -4,7 +4,7 @@ class NoteEditorCoordinator: Coordinator {
 
     private(set) var note: Note {
         didSet {
-            noteEditorViewController.note = note
+            noteEditorViewController.setNote(note)
             didChangeNoteHandler?(note)
         }
     }
@@ -18,8 +18,11 @@ class NoteEditorCoordinator: Coordinator {
     private func showNoteEditorViewController() {
         let noteEditorViewController = NoteEditorViewController(note: note)
 
-        noteEditorViewController.emojiIconTappedHandler = { [weak self] in
+        noteEditorViewController.didTapEmojiHandler = { [weak self] in
             self?.showEmojiPickerViewController()
+        }
+        noteEditorViewController.didChangeNoteHandler = { [weak self] note in
+            self?.note = note
         }
 
         self.noteEditorViewController = noteEditorViewController
@@ -29,14 +32,13 @@ class NoteEditorCoordinator: Coordinator {
     // MARK: EmojiPickerViewController
 
     private func showEmojiPickerViewController() {
-        #warning("TODO: Proper emoji")
-        let emojiSelection = emojiCategories["people"]!
-        let emojiPickerViewController = EmojiPickerViewController(emojiSelection: emojiSelection)
+        let emojis = emojiCategories["people"]!
+        let emojiPickerViewController = EmojiPickerViewController(emojis: emojis)
 
-        emojiPickerViewController.title = note.icon
+        emojiPickerViewController.navigationItem.title = note.emoji
         emojiPickerViewController.didPickEmojiHandler = { [weak self] emoji in
             guard let self = self else { return }
-            self.note.icon = emoji
+            self.note.emoji = emoji
             self.navigationController?.popViewController(animated: true)
         }
 

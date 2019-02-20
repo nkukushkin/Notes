@@ -36,7 +36,7 @@ class NewNoteCoordinator: Coordinator {
     private weak var noteEditorCoordinator: NoteEditorCoordinator!
 
     private func showNoteEditorCoordinator() {
-        let newNote = Note(icon: "", title: "", body: "")
+        let newNote = Note(icon: "📝", title: "", body: "")
         let noteEditorCoordinator = NoteEditorCoordinator(note: newNote)
 
         let noteEditorNavigationItem = noteEditorCoordinator.navigationItem

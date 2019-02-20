@@ -4,7 +4,7 @@ class AppCoordinator {
 
     private lazy var window = UIWindow()
 
-    private lazy var noteStorage = UnstableNoteStorage(sampleNoteGenerator: RandomNoteGenerator())
+    private lazy var noteStorage = UnstableNoteStorage(noteGenerator: RandomNoteGenerator())
 
     func launch() {
         let noteListCoordinator = NoteListCoordinator(noteStorage: noteStorage)

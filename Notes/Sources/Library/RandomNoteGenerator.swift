@@ -1,44 +1,50 @@
 class RandomNoteGenerator {
-    private let randomEmoji = [
+    private let emojis = [
         "💩",
         "👻",
         "😻",
         "🙌",
-        "🚘",
-        "🎰",
+        "👆",
+        "🐷",
         "🐽",
-        "💡"
+        "💡",
+        "👺",
+        "🎃",
+        "🥾",
+        "💪",
+        "🥞",
+        "❤️"
     ]
 
-    private let randomTitles = [
+    private let strings = [
         "Hi",
-        "Hello",
-        "Title",
+        "Hello!",
         "I'm a note!",
         "YOLO!",
-        "No."
+        "No.",
+        "Kek",
+        "Lorem ipsum",
+        "Subscribe",
+        "To",
+        "Pewdiepie",
+        "Pokèmon",
+        "FBI",
+        "Groceries",
+        "To Do",
+        "Recommendataions",
+        "Note",
+        "Sample"
     ]
 
-    private let randomBodies = [
-        "Hi",
-        "Hello",
-        "Title",
-        "I'm a note!",
-        "YOLO!",
-        "No."
-    ]
-
-    func generateRandomNote() -> Note {
-        let emoji = randomEmoji.randomElement() ?? ""
-        let title = randomTitles.randomElement() ?? ""
-        let body = randomBodies.randomElement() ?? ""
+    func generateNote() -> Note {
+        let emoji = emojis.randomElement() ?? ""
+        let title = strings.randomElement() ?? ""
+        let body = strings.randomElement() ?? ""
         return Note(icon: emoji, title: title, body: body)
     }
 
-    func generateRandomNotes(quantity: Int) -> [Note] {
+    func generateNotes(quantity: Int) -> [Note] {
         guard quantity > 0 else { return [] }
-        return (1...quantity).map { _ in
-            generateRandomNote()
-        }
+        return (1...quantity).map { _ in generateNote() }
     }
 }
