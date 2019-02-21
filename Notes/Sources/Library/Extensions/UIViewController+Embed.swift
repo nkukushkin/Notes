@@ -6,7 +6,7 @@ extension UIViewController {
         
         // if the view controller is already a child of something else, remove it
         if let oldParent = newChild.parent, oldParent != self {
-            newChild.beginAppearanceTransition(false, animated: false)
+//            newChild.beginAppearanceTransition(false, animated: false)
             newChild.willMove(toParent: nil)
             newChild.removeFromParent()
             
@@ -14,7 +14,7 @@ extension UIViewController {
                 newChild.viewIfLoaded?.removeFromSuperview()
             }
             
-            newChild.endAppearanceTransition()
+//            newChild.endAppearanceTransition()
         }
         
         // since .view returns an IUO, by default the type of this is "UIView?"
@@ -26,11 +26,11 @@ extension UIViewController {
         
         // add the view controller as a child
         if newChild.parent != self {
-            newChild.beginAppearanceTransition(true, animated: false)
+//            newChild.beginAppearanceTransition(true, animated: false)
             addChild(newChild)
             newChild.didMove(toParent: self)
             targetContainer.embedSubview(newChild.view)
-            newChild.endAppearanceTransition()
+//            newChild.endAppearanceTransition()
         } else {
             // the viewcontroller is already a child
             // make sure it's in the right view

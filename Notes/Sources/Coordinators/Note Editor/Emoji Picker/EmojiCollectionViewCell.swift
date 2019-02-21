@@ -8,6 +8,8 @@ class EmojiCollectionViewCell: UICollectionViewCell {
         didSet { updateUserInterface() }
     }
 
+    // MARK: User Interface
+
     private lazy var emojiLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -22,6 +24,8 @@ class EmojiCollectionViewCell: UICollectionViewCell {
     private func updateUserInterface() {
         emojiLabel.text = emoji
     }
+
+    // MARK: Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)

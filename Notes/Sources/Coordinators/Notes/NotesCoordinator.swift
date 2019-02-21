@@ -1,19 +1,11 @@
 import UIKit
 
-class NoteListCoordinator: Coordinator {
+class NotesCoordinator: Coordinator {
     private lazy var rootNavigationController: UINavigationController = {
         let navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
         return navigationController
     }()
-
-    private enum State {
-        case viewing(noteList: NoteListViewController)
-        case adding(newNote: NewNoteCoordinator)
-        case editing(note: Note, noteEditor: NoteEditorCoordinator)
-    }
-
-    private var state: State? = nil
 
     private let noteStorage: NoteStorage
 

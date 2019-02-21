@@ -7,9 +7,9 @@ class AppCoordinator {
     private lazy var noteStorage = UnstableNoteStorage(noteGenerator: RandomNoteGenerator())
 
     func launch() {
-        let noteListCoordinator = NoteListCoordinator(noteStorage: noteStorage)
+        let notesCoordinator = NotesCoordinator(noteStorage: noteStorage)
 
-        window.rootViewController = noteListCoordinator
+        window.rootViewController = notesCoordinator
         window.makeKeyAndVisible()
     }
 }

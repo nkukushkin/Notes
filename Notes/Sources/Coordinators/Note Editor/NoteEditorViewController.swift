@@ -34,7 +34,6 @@ class NoteEditorBodyTextView: EmbeddableTextView {
 }
 
 class NoteEditorViewController: UIViewController {
-
     private(set) var note: Note
 
     func setNote(_ note: Note) {
@@ -73,12 +72,18 @@ class NoteEditorViewController: UIViewController {
         mainStackView.preservesSuperviewLayoutMargins = true
         mainStackView.axis = .vertical
 
-        mainStackView.addArrangedSubview(buttonStackView)
+        mainStackView.addArrangedSubview(iconButton)
         mainStackView.addArrangedSubview(titleTextView)
         mainStackView.setCustomSpacing(15, after: titleTextView)
         mainStackView.addArrangedSubview(bodyTextView)
 
         scrollView.embedSubview(mainStackView)
+
+        iconButton.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        titleTextView.setContentHuggingPriority(.defaultHigh - 1, for: .vertical)
+        bodyTextView.setContentHuggingPriority(.defaultHigh - 2, for: .vertical)
+
+        mainStackView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.layoutMarginsGuide.heightAnchor).isActive = true
         mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 
         setupActions()
@@ -97,11 +102,64 @@ class NoteEditorViewController: UIViewController {
         bodyTextView.delegate = self
     }
 
+    // MARK: Keyboard Observing
+
+    private var scrollView: UIScrollView {
+        return view as! UIScrollView
+    }
+
+    private let keyboardNotificationNames: [Notification.Name] = [
+        UIResponder.keyboardWillShowNotification,
+        UIResponder.keyboardWillHideNotification,
+        UIResponder.keyboardWillChangeFrameNotification
+    ]
+
+    @objc func handleKeyboardNotification(notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let keyboardFrameEnd = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
+        else { return }
+
+        let bottomInset = keyboardFrameEnd.height
+        print("\(notification.name)")
+        print("bottom inset: \(bottomInset)")
+
+        scrollView.contentInset.bottom = bottomInset
+        scrollView.scrollIndicatorInsets.bottom = bottomInset
+    }
+
+    private func registerForKeyboardNotifications() {
+        for notificationName in keyboardNotificationNames {
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(handleKeyboardNotification(notification:)),
+                name: notificationName,
+                object: nil
+            )
+        }
+    }
+
+    private func unregisterFromKeyboardNotifications() {
+        for notificationName in keyboardNotificationNames {
+            NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+        }
+    }
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUserInterface()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        registerForKeyboardNotifications()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        unregisterFromKeyboardNotifications()
     }
 
     // MARK: Initialization

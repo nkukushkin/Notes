@@ -6,7 +6,7 @@ class UnstableNoteStorage: NoteStorage {
 
     private enum Constants {
         static let maxNotes = 5
-        static let mutationInterval: TimeInterval = 3
+        static let mutationInterval: TimeInterval = 10
     }
 
     // MARK: Actions

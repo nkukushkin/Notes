@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4BD221D65BA00E6AA29 /* Emojis.swift */; };
 		11A493DF221AD4D1004B4E01 /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493DE221AD4D1004B4E01 /* EmojiPickerViewController.swift */; };
 		11A493E5221AE084004B4E01 /* NoteEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493E4221AE084004B4E01 /* NoteEditorCoordinator.swift */; };
 		11A493EA221AE9B2004B4E01 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */; };
@@ -25,13 +26,14 @@
 		83B6944A221193AB0078B959 /* UIViewController+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B69448221193AB0078B959 /* UIViewController+Embed.swift */; };
 		83B6944C221194070078B959 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6944B221194070078B959 /* Coordinator.swift */; };
 		83B694502211945A0078B959 /* NoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6944F2211945A0078B959 /* NoteStorage.swift */; };
-		83B694522211949A0078B959 /* NoteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B694512211949A0078B959 /* NoteListCoordinator.swift */; };
+		83B694522211949A0078B959 /* NotesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B694512211949A0078B959 /* NotesCoordinator.swift */; };
 		83B694582212A4200078B959 /* NewNoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B694572212A4200078B959 /* NewNoteCoordinator.swift */; };
 		83B6945E2212EC6E0078B959 /* EmbeddableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6945D2212EC6E0078B959 /* EmbeddableTextView.swift */; };
 		83B69462221442270078B959 /* NoteEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B69461221442270078B959 /* NoteEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		116CE4BD221D65BA00E6AA29 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		11A493DE221AD4D1004B4E01 /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
 		11A493E4221AE084004B4E01 /* NoteEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorCoordinator.swift; sourceTree = "<group>"; };
 		11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -52,7 +54,7 @@
 		83B69448221193AB0078B959 /* UIViewController+Embed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Embed.swift"; sourceTree = "<group>"; };
 		83B6944B221194070078B959 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		83B6944F2211945A0078B959 /* NoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStorage.swift; sourceTree = "<group>"; };
-		83B694512211949A0078B959 /* NoteListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListCoordinator.swift; sourceTree = "<group>"; };
+		83B694512211949A0078B959 /* NotesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCoordinator.swift; sourceTree = "<group>"; };
 		83B694572212A4200078B959 /* NewNoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteCoordinator.swift; sourceTree = "<group>"; };
 		83B6945D2212EC6E0078B959 /* EmbeddableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddableTextView.swift; sourceTree = "<group>"; };
 		83B69461221442270078B959 /* NoteEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 		11A493E7221AE0BB004B4E01 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				83B69453221194C90078B959 /* Note List */,
+				83B69453221194C90078B959 /* Notes */,
 				11A493E6221AE093004B4E01 /* Note Editor */,
 				83B694572212A4200078B959 /* NewNoteCoordinator.swift */,
 			);
@@ -92,6 +94,7 @@
 		11A493E8221AE99C004B4E01 /* Emoji Picker */ = {
 			isa = PBXGroup;
 			children = (
+				116CE4BD221D65BA00E6AA29 /* Emojis.swift */,
 				11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */,
 				11A493EB221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift */,
 				11A493DE221AD4D1004B4E01 /* EmojiPickerViewController.swift */,
@@ -187,13 +190,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		83B69453221194C90078B959 /* Note List */ = {
+		83B69453221194C90078B959 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				83B694512211949A0078B959 /* NoteListCoordinator.swift */,
+				83B694512211949A0078B959 /* NotesCoordinator.swift */,
 				83B6942E22118C1E0078B959 /* NoteListViewController.swift */,
 			);
-			path = "Note List";
+			path = Notes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +271,7 @@
 			files = (
 				83B6944C221194070078B959 /* Coordinator.swift in Sources */,
 				83B6944222118C810078B959 /* AppCoordinator.swift in Sources */,
-				83B694522211949A0078B959 /* NoteListCoordinator.swift in Sources */,
+				83B694522211949A0078B959 /* NotesCoordinator.swift in Sources */,
 				11A493EA221AE9B2004B4E01 /* EmojiCollectionViewCell.swift in Sources */,
 				8327F8C12216B0C6004CEE01 /* Observable.swift in Sources */,
 				83B694582212A4200078B959 /* NewNoteCoordinator.swift in Sources */,
@@ -284,6 +287,7 @@
 				83B69449221193AB0078B959 /* UIView+Emded.swift in Sources */,
 				83B6945E2212EC6E0078B959 /* EmbeddableTextView.swift in Sources */,
 				11CE58A7221BFF2E003867F1 /* TimerController.swift in Sources */,
+				116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */,
 				83B6944422118CE40078B959 /* Note.swift in Sources */,
 				83B694502211945A0078B959 /* NoteStorage.swift in Sources */,
 			);
@@ -424,6 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4X647CT243;
 				INFOPLIST_FILE = "$(SRCROOT)/Notes/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -441,6 +446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4X647CT243;
 				INFOPLIST_FILE = "$(SRCROOT)/Notes/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
