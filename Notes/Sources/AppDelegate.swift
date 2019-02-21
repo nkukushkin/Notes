@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
 
         #if DEBUG
-            UIViewController.swizzle()
+            UIViewController.swizzleLifecycleLogging()
         #endif
 
         appCoordinator.launch()

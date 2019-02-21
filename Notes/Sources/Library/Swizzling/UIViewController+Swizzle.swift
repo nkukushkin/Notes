@@ -1,8 +1,8 @@
 import UIKit
 
 extension UIViewController {
-    static func swizzle() {
-        let swizzlePairs = [
+    static func swizzleLifecycleLogging() {
+        let swizzleSelectorPairs = [
             (#selector(swizzled_loadView), #selector(loadView)),
             (#selector(swizzled_viewDidLoad), #selector(viewDidLoad)),
             (#selector(swizzled_viewWillAppear(_:)), #selector(viewWillAppear(_:))),
@@ -11,8 +11,8 @@ extension UIViewController {
             (#selector(swizzled_viewDidDisappear(_:)), #selector(viewDidDisappear(_:)))
         ]
 
-        for (swizzled, original) in swizzlePairs {
-            exchangeImplementations(swizzled, original, classSelectors: false, for: self)
+        for (swizzled, original) in swizzleSelectorPairs {
+            exchangeImplementations(swizzled, original, areClassSelectors: false, for: self)
         }
     }
 }
