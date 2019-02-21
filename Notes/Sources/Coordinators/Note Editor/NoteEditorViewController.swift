@@ -120,7 +120,7 @@ class NoteEditorViewController: UIViewController {
             let keyboardFrameEnd = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
         else { return }
 
-        let bottomInset = keyboardFrameEnd.height
+        let bottomInset = keyboardFrameEnd.height - view.layoutMargins.bottom
         print("\(notification.name)")
         print("bottom inset: \(bottomInset)")
 
