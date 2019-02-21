@@ -120,7 +120,6 @@
 			children = (
 				83B6944B221194070078B959 /* Coordinator.swift */,
 				11CE58A6221BFF2E003867F1 /* TimerController.swift */,
-				11CE58A4221BF73B003867F1 /* RandomNoteGenerator.swift */,
 				83B6945D2212EC6E0078B959 /* EmbeddableTextView.swift */,
 				8327F8C02216B0C6004CEE01 /* Observable.swift */,
 				83B6944D2211943F0078B959 /* Extensions */,
@@ -200,6 +199,7 @@
 				83B6944322118CE40078B959 /* Note.swift */,
 				83B6944F2211945A0078B959 /* NoteStorage.swift */,
 				11CE58A2221BF40D003867F1 /* UnstableNoteStorage.swift */,
+				11CE58A4221BF73B003867F1 /* RandomNoteGenerator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
