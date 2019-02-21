@@ -10,6 +10,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
 
+        #if DEBUG
+            UIViewController.swizzle()
+        #endif
+
         appCoordinator.launch()
 
         return true
