@@ -76,20 +76,21 @@ class NKTextView: UITextView {
 
     // MARK: Margins
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        textContainerInset = layoutMargins
-    }
-
     override func layoutMarginsDidChange() {
         super.layoutMarginsDidChange()
+        updateTextContinerInsets()
         setNeedsLayout()
+    }
+
+    private func updateTextContinerInsets() {
+        textContainerInset = layoutMargins
     }
 
     // MARK: Initialization
 
     private func setup() {
         textContainer.lineFragmentPadding = 0 // remove unnecessary padding
+        updateTextContinerInsets()
         setupPlaceholderLabel()
         updatePlaceholderLabel()
         observeTextChanges()
