@@ -3,7 +3,7 @@ import UIKit
 class NoteEditorEmojiButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .red
+//        backgroundColor = .red
 
         titleLabel?.font = .systemFont(ofSize: 60)
     }

@@ -3,14 +3,15 @@ import UIKit
 class NoteEditorTitleTextView: NKTextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        backgroundColor = .green
+//        backgroundColor = .green
 
         placeholder = "Untitled"
         font = .boldTitle1
         isScrollEnabled = false
         returnKeyType = .continue
 
-        layoutMargins = .zero
+        layoutMargins.left = 0
+        layoutMargins.right = 0
         preservesSuperviewLayoutMargins = true
     }
 }

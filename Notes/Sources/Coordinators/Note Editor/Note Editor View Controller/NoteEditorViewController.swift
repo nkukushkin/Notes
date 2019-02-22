@@ -32,13 +32,12 @@ class NoteEditorViewController: UIViewController {
         let headerStackView = UIStackView(arrangedSubviews: [emojiButton, titleTextView])
         headerStackView.axis = .vertical
         headerStackView.alignment = .leading
-        headerStackView.spacing = 0
 
         let mainStackView = UIStackView(arrangedSubviews: [headerStackView, bodyTextView])
         mainStackView.preservesSuperviewLayoutMargins = true
         mainStackView.isLayoutMarginsRelativeArrangement = true
         mainStackView.axis = .vertical
-        mainStackView.spacing = 15
+        mainStackView.spacing = 10
 
         emojiButton.setContentHuggingPriority(.defaultHigh + 2, for: .vertical)
         titleTextView.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
