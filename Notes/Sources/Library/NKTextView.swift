@@ -49,10 +49,10 @@ class NKTextView: UITextView {
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         let guide = layoutMarginsGuide
         NSLayoutConstraint.activate([
-            guide.leadingAnchor.constraint(equalTo: placeholderLabel.leadingAnchor),
-            placeholderLabel.trailingAnchor.constraint(lessThanOrEqualTo: guide.trailingAnchor),
-            guide.topAnchor.constraint(equalTo: placeholderLabel.topAnchor),
-            placeholderLabel.bottomAnchor.constraint(lessThanOrEqualTo: guide.bottomAnchor)
+            placeholderLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            guide.trailingAnchor.constraint(greaterThanOrEqualTo: placeholderLabel.trailingAnchor),
+            placeholderLabel.topAnchor.constraint(equalTo: guide.topAnchor),
+            guide.bottomAnchor.constraint(greaterThanOrEqualTo: placeholderLabel.bottomAnchor)
         ])
     }
 
