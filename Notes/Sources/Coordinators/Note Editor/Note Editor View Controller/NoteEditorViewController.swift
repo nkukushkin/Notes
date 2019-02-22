@@ -1,48 +1,5 @@
 import UIKit
 
-class NoteEditorIconButton: UIButton {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layoutMargins = .zero
-        backgroundColor = .red
-        titleLabel?.font = .systemFont(ofSize: 60)
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class NoteEditorTitleTextView: NKTextView {
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
-        super.init(frame: frame, textContainer: textContainer)
-//        layoutMargins = .zero
-        backgroundColor = .green
-        preservesSuperviewLayoutMargins = true
-        isScrollEnabled = false
-        returnKeyType = .continue
-        let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1)
-        let boldDescriptor = descriptor.withSymbolicTraits(.traitBold)!
-        font = UIFont(descriptor: boldDescriptor, size: 0)
-        text = "WHY NO??"
-//        placeholder = "Untitled"
-    }
-}
-
-class NoteEditorBodyTextView: NKTextView {
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
-        super.init(frame: frame, textContainer: textContainer)
-        backgroundColor = .blue
-        layoutMargins = .zero
-        preservesSuperviewLayoutMargins = true
-        isScrollEnabled = false
-
-        font = .preferredFont(forTextStyle: .body)
-//        placeholder = "Empty note."
-    }
-}
-
 class NoteEditorViewController: UIViewController {
     private(set) var note: Note
 
@@ -60,7 +17,7 @@ class NoteEditorViewController: UIViewController {
         bodyTextView.text = note.body
     }
 
-    private lazy var emojiButton = NoteEditorIconButton()
+    private lazy var emojiButton = NoteEditorEmojiButton()
     private lazy var titleTextView = NoteEditorTitleTextView()
     private lazy var bodyTextView = NoteEditorBodyTextView()
 
