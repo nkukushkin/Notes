@@ -13,23 +13,25 @@ class NoteEditorIconButton: UIButton {
     }
 }
 
-class NoteEditorTitleTextView: EmbeddableTextView {
+class NoteEditorTitleTextView: NKTextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        backgroundColor = .red
+        backgroundColor = .green
         preservesSuperviewLayoutMargins = true
         isScrollEnabled = false
         font = .preferredFont(forTextStyle: .title1)
+        placeholder = "Title"
     }
 }
 
-class NoteEditorBodyTextView: EmbeddableTextView {
+class NoteEditorBodyTextView: NKTextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         backgroundColor = .red
         preservesSuperviewLayoutMargins = true
         isScrollEnabled = false
         font = .preferredFont(forTextStyle: .body)
+        placeholder = "Write your note here…"
     }
 }
 

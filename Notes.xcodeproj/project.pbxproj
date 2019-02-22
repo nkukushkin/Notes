@@ -30,7 +30,7 @@
 		83B694502211945A0078B959 /* NoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6944F2211945A0078B959 /* NoteStorage.swift */; };
 		83B694522211949A0078B959 /* NotesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B694512211949A0078B959 /* NotesCoordinator.swift */; };
 		83B694582212A4200078B959 /* NewNoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B694572212A4200078B959 /* NewNoteCoordinator.swift */; };
-		83B6945E2212EC6E0078B959 /* EmbeddableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6945D2212EC6E0078B959 /* EmbeddableTextView.swift */; };
+		83B6945E2212EC6E0078B959 /* NKTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6945D2212EC6E0078B959 /* NKTextView.swift */; };
 		83B69462221442270078B959 /* NoteEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B69461221442270078B959 /* NoteEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +60,7 @@
 		83B6944F2211945A0078B959 /* NoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStorage.swift; sourceTree = "<group>"; };
 		83B694512211949A0078B959 /* NotesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCoordinator.swift; sourceTree = "<group>"; };
 		83B694572212A4200078B959 /* NewNoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteCoordinator.swift; sourceTree = "<group>"; };
-		83B6945D2212EC6E0078B959 /* EmbeddableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddableTextView.swift; sourceTree = "<group>"; };
+		83B6945D2212EC6E0078B959 /* NKTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKTextView.swift; sourceTree = "<group>"; };
 		83B69461221442270078B959 /* NoteEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +120,7 @@
 			children = (
 				83B6944B221194070078B959 /* Coordinator.swift */,
 				11CE58A6221BFF2E003867F1 /* TimerController.swift */,
-				83B6945D2212EC6E0078B959 /* EmbeddableTextView.swift */,
+				83B6945D2212EC6E0078B959 /* NKTextView.swift */,
 				8327F8C02216B0C6004CEE01 /* Observable.swift */,
 				83B6944D2211943F0078B959 /* Extensions */,
 				116CE4C3221EA78F00E6AA29 /* Swizzling */,
@@ -300,7 +300,7 @@
 				11A493E5221AE084004B4E01 /* NoteEditorCoordinator.swift in Sources */,
 				11A493EC221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift in Sources */,
 				83B69449221193AB0078B959 /* UIView+Emded.swift in Sources */,
-				83B6945E2212EC6E0078B959 /* EmbeddableTextView.swift in Sources */,
+				83B6945E2212EC6E0078B959 /* NKTextView.swift in Sources */,
 				116CE4C5221EA7B000E6AA29 /* UIViewController+Swizzle.swift in Sources */,
 				11CE58A7221BFF2E003867F1 /* TimerController.swift in Sources */,
 				116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */,
