@@ -109,8 +109,8 @@ class NKTextView: UITextView {
 // MARK: - Default Placeholder Color
 
 private extension UIColor {
-    // From https://stackoverflow.com/a/43346157/1607485
     static var applePlaceholderGray: UIColor {
+        // From https://stackoverflow.com/a/43346157/1607485
         return UIColor(red: 0.0, green: 0.0, blue: 0.0980392, alpha: 0.22)
     }
 }

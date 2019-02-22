@@ -3,8 +3,9 @@ import UIKit
 class NoteEditorIconButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layoutMargins = .zero
         backgroundColor = .red
-        titleLabel?.font = .systemFont(ofSize: 50)
+        titleLabel?.font = .systemFont(ofSize: 60)
     }
 
     @available(*, unavailable)
@@ -16,22 +17,29 @@ class NoteEditorIconButton: UIButton {
 class NoteEditorTitleTextView: NKTextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
+//        layoutMargins = .zero
         backgroundColor = .green
         preservesSuperviewLayoutMargins = true
         isScrollEnabled = false
-        font = .preferredFont(forTextStyle: .title1)
-        placeholder = "Title"
+        returnKeyType = .continue
+        let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1)
+        let boldDescriptor = descriptor.withSymbolicTraits(.traitBold)!
+        font = UIFont(descriptor: boldDescriptor, size: 0)
+        text = "WHY NO??"
+//        placeholder = "Untitled"
     }
 }
 
 class NoteEditorBodyTextView: NKTextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        backgroundColor = .red
+        backgroundColor = .blue
+        layoutMargins = .zero
         preservesSuperviewLayoutMargins = true
         isScrollEnabled = false
+
         font = .preferredFont(forTextStyle: .body)
-        placeholder = "Write your note here…"
+//        placeholder = "Empty note."
     }
 }
 
@@ -47,12 +55,12 @@ class NoteEditorViewController: UIViewController {
     var didChangeNoteHandler: ((Note) -> Void)?
 
     private func updateUserInterface() {
-        iconButton.setTitle(note.emoji, for: .normal)
+        emojiButton.setTitle(note.emoji, for: .normal)
         titleTextView.text = note.title
         bodyTextView.text = note.body
     }
 
-    private lazy var iconButton = NoteEditorIconButton()
+    private lazy var emojiButton = NoteEditorIconButton()
     private lazy var titleTextView = NoteEditorTitleTextView()
     private lazy var bodyTextView = NoteEditorBodyTextView()
 
@@ -64,27 +72,22 @@ class NoteEditorViewController: UIViewController {
         scrollView.alwaysBounceVertical = true
         view = scrollView
 
-        let buttonStackView = UIStackView(arrangedSubviews: [iconButton])
-        buttonStackView.preservesSuperviewLayoutMargins = true
-        buttonStackView.isLayoutMarginsRelativeArrangement = true
-        buttonStackView.axis = .vertical
-        buttonStackView.alignment = .leading
+        let headerStackView = UIStackView(arrangedSubviews: [emojiButton, titleTextView])
+        headerStackView.axis = .vertical
+        headerStackView.alignment = .leading
+        headerStackView.spacing = 0
 
-        let mainStackView = UIStackView()
+        let mainStackView = UIStackView(arrangedSubviews: [headerStackView, bodyTextView])
         mainStackView.preservesSuperviewLayoutMargins = true
+        mainStackView.isLayoutMarginsRelativeArrangement = true
         mainStackView.axis = .vertical
+        mainStackView.spacing = 15
 
-        mainStackView.addArrangedSubview(iconButton)
-        mainStackView.addArrangedSubview(titleTextView)
-        mainStackView.setCustomSpacing(15, after: titleTextView)
-        mainStackView.addArrangedSubview(bodyTextView)
+        emojiButton.setContentHuggingPriority(.defaultHigh + 2, for: .vertical)
+        titleTextView.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
+        bodyTextView.setContentHuggingPriority(.defaultLow, for: .vertical)
 
         scrollView.embedSubview(mainStackView)
-
-        iconButton.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        titleTextView.setContentHuggingPriority(.defaultHigh - 1, for: .vertical)
-        bodyTextView.setContentHuggingPriority(.defaultHigh - 2, for: .vertical)
-
         mainStackView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.layoutMarginsGuide.heightAnchor).isActive = true
         mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 
@@ -99,7 +102,7 @@ class NoteEditorViewController: UIViewController {
     }
 
     private func setupActions() {
-        iconButton.addTarget(self, action: #selector(emojiButtonTapped), for: .touchUpInside)
+        emojiButton.addTarget(self, action: #selector(emojiButtonTapped), for: .touchUpInside)
         titleTextView.delegate = self
         bodyTextView.delegate = self
     }
@@ -131,19 +134,19 @@ class NoteEditorViewController: UIViewController {
     }
 
     private func registerForKeyboardNotifications() {
-        for notificationName in keyboardNotificationNames {
+        for name in keyboardNotificationNames {
             NotificationCenter.default.addObserver(
                 self,
                 selector: #selector(handleKeyboardNotification(notification:)),
-                name: notificationName,
+                name: name,
                 object: nil
             )
         }
     }
 
     private func unregisterFromKeyboardNotifications() {
-        for notificationName in keyboardNotificationNames {
-            NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+        for name in keyboardNotificationNames {
+            NotificationCenter.default.removeObserver(self, name: name, object: nil)
         }
     }
 
@@ -180,6 +183,26 @@ class NoteEditorViewController: UIViewController {
 // MARK: - UITextViewDelegate
 
 extension NoteEditorViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        var tappedEnter: Bool {
+            return text.allCharactersAre(.newlines)
+        }
+        var tappedBackspaceOnFirstCharacterPosition: Bool {
+            return range == .zero && text.isEmpty
+        }
+
+        switch textView {
+        case titleTextView where tappedEnter:
+            bodyTextView.becomeFirstResponder()
+            return false
+        case bodyTextView where tappedBackspaceOnFirstCharacterPosition:
+            titleTextView.becomeFirstResponder()
+            return false
+        default:
+            return true
+        }
+    }
+
     func textViewDidChange(_ textView: UITextView) {
         switch textView {
         case titleTextView:
