@@ -3,9 +3,9 @@ import UIKit
 class NoteEditorBodyTextView: NKTextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-//        backgroundColor = .blue
+        backgroundColor = .blue
 
-        placeholder = "Write your note here…"
+        placeholder = LocalizedStrings.noteBodyPlaceholder
         font = .preferredFont(forTextStyle: .body)
         isScrollEnabled = false
         
@@ -15,4 +15,13 @@ class NoteEditorBodyTextView: NKTextView {
     }
 }
 
-#warning("TODO: Localized Strings")
+// MARK: - Localized Strings
+
+private enum LocalizedStrings {
+    static var noteBodyPlaceholder: String {
+        return NSLocalizedString(
+            "Write your note here…",
+            comment: "Placeholder for the field where user can edit note body."
+        )
+    }
+}

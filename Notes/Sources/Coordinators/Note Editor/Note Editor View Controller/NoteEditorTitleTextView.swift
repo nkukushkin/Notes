@@ -3,10 +3,12 @@ import UIKit
 class NoteEditorTitleTextView: NKTextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-//        backgroundColor = .green
+        backgroundColor = .green
 
-        placeholder = "Untitled"
-        font = .boldTitle1
+        placeholder = LocalizedStrings.noteTitlePlaceholder
+        font = UIFont.preferredFont(forTextStyle: .title1)
+            // We know that the system font supports `traitBold`
+            .withSymbolicTraits(.traitBold)!
         isScrollEnabled = false
         returnKeyType = .continue
 
@@ -16,14 +18,13 @@ class NoteEditorTitleTextView: NKTextView {
     }
 }
 
-#warning("TODO: Localized Strings")
+// MARK: - Localized Strings
 
-// MARK: UIFont + Bold Title1
-
-private extension UIFont {
-    static var boldTitle1: UIFont {
-        let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1)
-        let boldDescriptor = descriptor.withSymbolicTraits(.traitBold)! // we know that system font has this trait
-        return UIFont(descriptor: boldDescriptor, size: 0)
+private enum LocalizedStrings {
+    static var noteTitlePlaceholder: String {
+        return NSLocalizedString(
+            "Untitled",
+            comment: "Placeholder for the field where user can edit note title."
+        )
     }
 }
