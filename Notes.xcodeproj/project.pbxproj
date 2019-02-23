@@ -19,6 +19,7 @@
 		11BF9D662220487C00CDEC51 /* NoteEditorEmojiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D652220487C00CDEC51 /* NoteEditorEmojiButton.swift */; };
 		11BF9D682220489800CDEC51 /* NoteEditorTitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D672220489800CDEC51 /* NoteEditorTitleTextView.swift */; };
 		11BF9D6A222048B900CDEC51 /* NoteEditorBodyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D69222048B900CDEC51 /* NoteEditorBodyTextView.swift */; };
+		11BF9D742221C6C600CDEC51 /* UIFont+SymbolicTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D732221C6C600CDEC51 /* UIFont+SymbolicTraits.swift */; };
 		11CE58A3221BF40D003867F1 /* UnstableNoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE58A2221BF40D003867F1 /* UnstableNoteStorage.swift */; };
 		11CE58A5221BF73B003867F1 /* RandomNoteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE58A4221BF73B003867F1 /* RandomNoteGenerator.swift */; };
 		11CE58A7221BFF2E003867F1 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE58A6221BFF2E003867F1 /* TimerController.swift */; };
@@ -52,6 +53,7 @@
 		11BF9D652220487C00CDEC51 /* NoteEditorEmojiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorEmojiButton.swift; sourceTree = "<group>"; };
 		11BF9D672220489800CDEC51 /* NoteEditorTitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorTitleTextView.swift; sourceTree = "<group>"; };
 		11BF9D69222048B900CDEC51 /* NoteEditorBodyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorBodyTextView.swift; sourceTree = "<group>"; };
+		11BF9D732221C6C600CDEC51 /* UIFont+SymbolicTraits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+SymbolicTraits.swift"; sourceTree = "<group>"; };
 		11CE58A2221BF40D003867F1 /* UnstableNoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstableNoteStorage.swift; sourceTree = "<group>"; };
 		11CE58A4221BF73B003867F1 /* RandomNoteGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNoteGenerator.swift; sourceTree = "<group>"; };
 		11CE58A6221BFF2E003867F1 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				83B69448221193AB0078B959 /* UIViewController+Embed.swift */,
 				11BF9D6022203B4700CDEC51 /* String+CharacterSet.swift */,
 				11BF9D6222203CD800CDEC51 /* NSRange+Zero.swift */,
+				11BF9D732221C6C600CDEC51 /* UIFont+SymbolicTraits.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				11BF9D662220487C00CDEC51 /* NoteEditorEmojiButton.swift in Sources */,
 				83B6945E2212EC6E0078B959 /* NKTextView.swift in Sources */,
 				116CE4C5221EA7B000E6AA29 /* UIViewController+Swizzle.swift in Sources */,
+				11BF9D742221C6C600CDEC51 /* UIFont+SymbolicTraits.swift in Sources */,
 				11CE58A7221BFF2E003867F1 /* TimerController.swift in Sources */,
 				116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */,
 				83B6944422118CE40078B959 /* Note.swift in Sources */,
