@@ -14,6 +14,10 @@ class NKTextView: UITextView {
         didSet { updatePlaceholderLabel() }
     }
 
+    override var font: UIFont? {
+        didSet { updatePlaceholderLabel() }
+    }
+
     // MARK: Placeholder
 
     var placeholder: String? = nil {
@@ -45,8 +49,8 @@ class NKTextView: UITextView {
     }
 
     private func setupPlaceholderLabel() {
-        addSubview(placeholderLabel)
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(placeholderLabel)
         let guide = layoutMarginsGuide
         NSLayoutConstraint.activate([
             placeholderLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
@@ -79,7 +83,6 @@ class NKTextView: UITextView {
     override func layoutMarginsDidChange() {
         super.layoutMarginsDidChange()
         updateTextContinerInsets()
-        setNeedsLayout()
     }
 
     private func updateTextContinerInsets() {
