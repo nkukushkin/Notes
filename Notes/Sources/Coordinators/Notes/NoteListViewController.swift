@@ -39,8 +39,16 @@ class NoteListViewController: UITableViewController {
 
     var noteSelectedHanlder: ((Note) -> Void)?
 
-    private func registerTableViewCells() {
+    // MARK: View Lifecycle
+
+    private func setupTableView() {
+        tableView.tableFooterView = UIView() // remove extra separators
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: noteCellIdentifier)
+    }
+
+    override func loadView() {
+        super.loadView()
+        setupTableView()
     }
 
     // MARK: Lifecycle
@@ -53,11 +61,6 @@ class NoteListViewController: UITableViewController {
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        registerTableViewCells()
     }
 }
 
