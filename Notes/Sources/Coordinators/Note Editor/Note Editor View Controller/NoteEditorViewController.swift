@@ -103,11 +103,11 @@ extension NoteEditorViewController {
         guard
             let userInfo = notification.userInfo,
             let keyboardFrameEnd = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
-            else { return }
+        else { return }
 
-        let bottomInset = keyboardFrameEnd.height - view.layoutMargins.bottom
-        print("\(notification.name)")
-        print("bottom inset: \(bottomInset)")
+        let bottomInset = notification.name == UIResponder.keyboardWillHideNotification
+            ? 0
+            : keyboardFrameEnd.height - view.layoutMargins.bottom
 
         scrollView.contentInset.bottom = bottomInset
         scrollView.scrollIndicatorInsets.bottom = bottomInset
