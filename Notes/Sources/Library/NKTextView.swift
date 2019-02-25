@@ -18,7 +18,7 @@ class NKTextView: UITextView {
         didSet { updatePlaceholderLabel() }
     }
 
-    // MARK: Placeholder
+    // MARK: - Placeholder
 
     var placeholder: String? = nil {
         didSet { updatePlaceholderLabel() }
@@ -60,7 +60,7 @@ class NKTextView: UITextView {
         ])
     }
 
-    // MARK: Observation
+    // MARK: - Observation
 
     @objc
     private func handleTextChangeNotification(_ notification: Notification) {
@@ -78,7 +78,7 @@ class NKTextView: UITextView {
         )
     }
 
-    // MARK: Margins
+    // MARK: - Margins
 
     override func layoutMarginsDidChange() {
         super.layoutMarginsDidChange()
@@ -89,7 +89,7 @@ class NKTextView: UITextView {
         textContainerInset = layoutMargins
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     private func setup() {
         textContainer.lineFragmentPadding = 0 // remove unnecessary padding

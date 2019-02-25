@@ -16,14 +16,14 @@ class EmojiPickerViewController: UICollectionViewController {
         )
     }
 
-    // MARK: Lifecycle
+    // MARK: - View Lifecycle
 
     override func loadView() {
         super.loadView()
         configureCollectionView()
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(emojis: [String]) {
         self.emojis = emojis

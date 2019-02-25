@@ -8,7 +8,7 @@ class EmojiCollectionViewCell: UICollectionViewCell {
         didSet { updateUserInterface() }
     }
 
-    // MARK: User Interface
+    // MARK: - User Interface
 
     private lazy var emojiLabel: UILabel = {
         let label = UILabel()
@@ -25,7 +25,7 @@ class EmojiCollectionViewCell: UICollectionViewCell {
         emojiLabel.text = emoji
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)

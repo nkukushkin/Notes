@@ -6,7 +6,7 @@ private let noteCellIdentifier = "NoteCell"
 //
 //    private let noteStorage: NoteStorage
 //
-//    // MARK: Observation
+//    // MARK: - Observation
 //
 //    private var noteStorageObservationToken: NoteStorage.ObservationToken?
 //
@@ -22,7 +22,7 @@ private let noteCellIdentifier = "NoteCell"
 //        noteStorage.removeObservation(for: token)
 //    }
 //
-//    // MARK: Lifecycle
+//    // MARK: - Lifecycle
 //
 //    init(noteStorage: NoteStorage) {
 //        self.noteStorage = noteStorage
@@ -39,7 +39,7 @@ class NoteListViewController: UITableViewController {
 
     var noteSelectedHanlder: ((Note) -> Void)?
 
-    // MARK: View Lifecycle
+    // MARK: - View Lifecycle
 
     private func setupTableView() {
         tableView.tableFooterView = UIView() // remove extra separators
@@ -51,7 +51,7 @@ class NoteListViewController: UITableViewController {
         setupTableView()
     }
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
 
     init(notes: [Note]) {
         self.notes = notes

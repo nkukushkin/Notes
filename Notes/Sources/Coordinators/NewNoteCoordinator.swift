@@ -6,7 +6,7 @@ class NewNoteCoordinator: Coordinator {
     var didCreateNoteHandler: ((Note) -> Void)?
     var cancelHandler: (() -> Void)?
 
-    // MARK: Actions
+    // MARK: - Actions
 
     @objc
     private func done() {
@@ -19,7 +19,7 @@ class NewNoteCoordinator: Coordinator {
         cancelHandler?()
     }
 
-    // MARK: Note Editor Coordinator
+    // MARK: - Note Editor Coordinator
 
     private lazy var doneBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .done,
@@ -48,7 +48,7 @@ class NewNoteCoordinator: Coordinator {
         rootNavigationController.pushViewController(noteEditorCoordinator, animated: false)
     }
 
-    // MARK: Lifecycle
+    // MARK: - View Lifecycle
 
     override func loadView() {
         super.loadView()

@@ -15,7 +15,7 @@ class Observable<ValueType> {
         }
     }
 
-    // MARK: Observation
+    // MARK: - Observation
 
     typealias Observation = (_ oldValue: ValueType, _ newValue: ValueType) -> Void
 
@@ -31,7 +31,7 @@ class Observable<ValueType> {
         observations[token] = nil
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(initialValue: ValueType) {
         self.value = initialValue

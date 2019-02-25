@@ -11,7 +11,7 @@ class NoteEditorCoordinator: Coordinator {
 
     var didChangeNoteHandler: ((Note) -> Void)?
 
-    // MARK: NoteEditorViewController
+    // MARK: - NoteEditorViewController
 
     private weak var noteEditorViewController: NoteEditorViewController!
 
@@ -29,7 +29,7 @@ class NoteEditorCoordinator: Coordinator {
         embedChild(noteEditorViewController, in: view)
     }
 
-    // MARK: EmojiPickerViewController
+    // MARK: - EmojiPickerViewController
 
     private func showEmojiPickerViewController() {
         let emojis = emojiCategories["people"]!
@@ -45,14 +45,14 @@ class NoteEditorCoordinator: Coordinator {
         navigationController?.pushViewController(emojiPickerViewController, animated: true)
     }
 
-    // MARK: Lifecycle
+    // MARK: - View Lifecycle
 
     override func loadView() {
         super.loadView()
         showNoteEditorViewController()
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(note: Note) {
         self.note = note

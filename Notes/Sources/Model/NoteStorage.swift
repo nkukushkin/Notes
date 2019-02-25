@@ -5,7 +5,7 @@ class NoteStorage {
         }
     }
 
-    // MARK: Saving
+    // MARK: - Saving
 
     func save(note: Note) {
         if let existingIndex = notes.firstIndex(of: note) {
@@ -20,7 +20,7 @@ class NoteStorage {
         for note in notes { save(note: note) }
     }
 
-    // MARK: Deleting
+    // MARK: - Deleting
 
     func delete(note: Note) {
         if let existingIndex = notes.firstIndex(of: note) {
@@ -32,7 +32,7 @@ class NoteStorage {
         for note in notes { delete(note: note) }
     }
 
-    // MARK: Basic Observing
+    // MARK: - Basic Observing
 
     typealias Observation = (_ oldValue: [Note], _ newValue: [Note]) -> Void
 

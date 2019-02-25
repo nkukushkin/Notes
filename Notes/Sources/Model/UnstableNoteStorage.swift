@@ -9,7 +9,7 @@ class UnstableNoteStorage: NoteStorage {
         static let mutationInterval: TimeInterval = 10
     }
 
-    // MARK: Actions
+    // MARK: - Actions
 
     private func addRandomNotes() {
         let max = Constants.maxNotes - notes.count
@@ -33,7 +33,7 @@ class UnstableNoteStorage: NoteStorage {
         }
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(noteGenerator: RandomNoteGenerator) {
         self.noteGenerator = noteGenerator

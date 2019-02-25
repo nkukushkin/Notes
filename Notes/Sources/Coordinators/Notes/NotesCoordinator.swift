@@ -9,7 +9,7 @@ class NotesCoordinator: Coordinator {
 
     private let noteStorage: NoteStorage
 
-    // MARK: Note List View Controller
+    // MARK: - Note List View Controller
 
     private lazy var newNoteBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .add,
@@ -34,7 +34,7 @@ class NotesCoordinator: Coordinator {
         rootNavigationController.pushViewController(noteListViewController, animated: true)
     }
 
-    // MARK: New Note Coordinator
+    // MARK: - New Note Coordinator
 
     @objc
     private func showNewNoteCoordinator() {
@@ -51,7 +51,7 @@ class NotesCoordinator: Coordinator {
         present(newNoteCoordinator, animated: true)
     }
 
-    // MARK: Note Editor Coordinator
+    // MARK: - Note Editor Coordinator
 
     private var openNote: Note?
 
@@ -81,7 +81,7 @@ class NotesCoordinator: Coordinator {
         noteStorage.delete(note: openNote)
     }
 
-    // MARK: Observation
+    // MARK: - Observation
 
     private var noteStorageObservationToken: NoteStorage.ObservationToken?
 
@@ -105,7 +105,7 @@ class NotesCoordinator: Coordinator {
         noteStorageObservationToken = nil
     }
 
-    // MARK: Lifecycle
+    // MARK: - View Lifecycle
 
     override func loadView() {
         super.loadView()
@@ -114,7 +114,7 @@ class NotesCoordinator: Coordinator {
         startObservingNoteStorage()
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(noteStorage: NoteStorage) {
         self.noteStorage = noteStorage
