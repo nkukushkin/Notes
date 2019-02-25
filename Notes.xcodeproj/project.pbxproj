@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113E55172223EC740052F631 /* UIStackView+ArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */; };
 		116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4BD221D65BA00E6AA29 /* Emojis.swift */; };
 		116CE4C2221EA3A600E6AA29 /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4C1221EA3A600E6AA29 /* Swizzling.swift */; };
 		116CE4C5221EA7B000E6AA29 /* UIViewController+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4C4221EA7B000E6AA29 /* UIViewController+Swizzle.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+ArrangedSubviews.swift"; sourceTree = "<group>"; };
 		116CE4BD221D65BA00E6AA29 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		116CE4C1221EA3A600E6AA29 /* Swizzling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
 		116CE4C4221EA7B000E6AA29 /* UIViewController+Swizzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swizzle.swift"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				11BF9D6022203B4700CDEC51 /* String+CharacterSet.swift */,
 				11BF9D6222203CD800CDEC51 /* NSRange+Zero.swift */,
 				11BF9D732221C6C600CDEC51 /* UIFont+SymbolicTraits.swift */,
+				113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				11CE58A7221BFF2E003867F1 /* TimerController.swift in Sources */,
 				116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */,
 				83B6944422118CE40078B959 /* Note.swift in Sources */,
+				113E55172223EC740052F631 /* UIStackView+ArrangedSubviews.swift in Sources */,
 				83B694502211945A0078B959 /* NoteStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
