@@ -1,8 +1,7 @@
 import UIKit
 
 class EmojiPickerViewController: UICollectionViewController {
-
-    private let emojis: [String]
+    private let emojis: [String] = allEmojis
 
     var didPickEmojiHandler: ((String) -> Void)?
 
@@ -25,8 +24,7 @@ class EmojiPickerViewController: UICollectionViewController {
 
     // MARK: - Initialization
 
-    init(emojis: [String]) {
-        self.emojis = emojis
+    init() {
         super.init(collectionViewLayout: EmojiCollectionViewLayout())
     }
 

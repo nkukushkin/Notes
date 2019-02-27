@@ -1,7 +1,7 @@
 import Foundation
 
 class UnstableNoteStorage: NoteStorage {
-    private let timer: TimerController
+    private let timer = TimerController(interval: Constants.mutationInterval, repeats: true)
     private let noteGenerator: RandomNoteGenerator
 
     private enum Constants {
@@ -37,12 +37,8 @@ class UnstableNoteStorage: NoteStorage {
 
     init(noteGenerator: RandomNoteGenerator) {
         self.noteGenerator = noteGenerator
-        timer = TimerController(interval: Constants.mutationInterval, repeats: true)
-
         super.init()
-
         addRandomNotes()
-
         timer.schedule { [weak self] in
             self?.peformRandomMutation()
         }

@@ -159,7 +159,7 @@ private enum LocalizedStrings {
 
     static var noteBodyPlaceholder: String {
         return NSLocalizedString(
-            "Write your note here…",
+            "Write your thoughts here…",
             comment: "Placeholder for the field where user can edit note body."
         )
     }

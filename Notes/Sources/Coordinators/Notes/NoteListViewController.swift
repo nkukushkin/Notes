@@ -3,7 +3,6 @@ import UIKit
 private let noteCellIdentifier = "NoteCell"
 
 class NoteListViewController: UITableViewController {
-
     var notes: [Note] {
         didSet {
             tableView.reloadData()

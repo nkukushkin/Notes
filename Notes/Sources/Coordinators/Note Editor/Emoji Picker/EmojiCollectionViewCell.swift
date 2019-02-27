@@ -1,7 +1,6 @@
 import UIKit
 
 class EmojiCollectionViewCell: UICollectionViewCell {
-
     static let reuseIdentifier = "EmojiCollectionViewCell"
 
     var emoji: String? {
@@ -13,7 +12,7 @@ class EmojiCollectionViewCell: UICollectionViewCell {
     private lazy var emojiLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 50)
+        label.font = .systemFont(ofSize: 50)
         return label
     }()
 

@@ -1,9 +1,7 @@
 import UIKit
 
 class AppCoordinator {
-
     private lazy var window = UIWindow()
-
     private lazy var noteStorage = UnstableNoteStorage(noteGenerator: RandomNoteGenerator())
 
     func launch() {

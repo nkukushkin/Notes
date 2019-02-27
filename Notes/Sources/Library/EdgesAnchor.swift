@@ -48,7 +48,7 @@ class EdgesAnchor {
     }
 }
 
-// MARK: - UIView + Edge Anchor
+// MARK: - UIView + Edges Anchor
 
 extension UIView {
     var edgesAnchor: EdgesAnchor {
@@ -61,7 +61,7 @@ extension UIView {
     }
 }
 
-// MARK: - UILayoutGuide + Edge Anchor
+// MARK: - UILayoutGuide + Edges Anchor
 
 extension UILayoutGuide {
     var edgesAnchor: EdgesAnchor {

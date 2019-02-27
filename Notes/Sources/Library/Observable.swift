@@ -4,7 +4,6 @@ class ObservationToken: NSObject {}
 
 /// Barebones observable implementation for demonstration purposes.
 class Observable<ValueType> {
-
     private(set) var value: ValueType
 
     func update(_ newValue: ValueType) {

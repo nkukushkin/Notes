@@ -2,7 +2,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     private let appCoordinator = AppCoordinator()
 
     func application(

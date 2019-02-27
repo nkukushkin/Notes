@@ -1,7 +1,6 @@
 import UIKit
 
 class NoteEditorCoordinator: Coordinator {
-
     private(set) var note: Note {
         didSet {
             noteEditorViewController.setNote(note)
@@ -32,8 +31,7 @@ class NoteEditorCoordinator: Coordinator {
     // MARK: - EmojiPickerViewController
 
     private func showEmojiPickerViewController() {
-        let emojis = emojiCategories["people"]!
-        let emojiPickerViewController = EmojiPickerViewController(emojis: emojis)
+        let emojiPickerViewController = EmojiPickerViewController()
 
         emojiPickerViewController.navigationItem.title = note.emoji
         emojiPickerViewController.didPickEmojiHandler = { [weak self] emoji in

@@ -1,20 +1,5 @@
 class RandomNoteGenerator {
-    private let emojis = [
-        "💩",
-        "👻",
-        "😻",
-        "🙌",
-        "👆",
-        "🐷",
-        "🐽",
-        "💡",
-        "👺",
-        "🎃",
-        "🥾",
-        "💪",
-        "🥞",
-        "❤️"
-    ]
+    private let emojis = allEmojis
 
     private let titles = [
         "Hi",
