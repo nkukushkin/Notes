@@ -30,25 +30,24 @@ class NoteEditorView: UIView {
 
     // MARK: - User Interface
 
+    private enum Constants {
+        static let verticalSpacing: CGFloat = 8
+    }
+
     private let emojiButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
         button.titleLabel?.font = .systemFont(ofSize: 50)
         return button
     }()
 
     private let titleTextView: NKTextView = {
         let textView = NKTextView()
-        textView.backgroundColor = .green
-
         textView.isScrollEnabled = false
         textView.font = UIFont.preferredFont(forTextStyle: .title1)
             // We know that the system font supports `traitBold`
             .withSymbolicTraits(.traitBold)!
         textView.placeholder = LocalizedStrings.noteTitlePlaceholder
         textView.returnKeyType = .continue
-
-        textView.layoutMargins = .zero
         return textView
     }()
 
@@ -63,12 +62,12 @@ class NoteEditorView: UIView {
     private let stackForTextViews: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 2
+        stackView.spacing = Constants.verticalSpacing
         return stackView
     }()
 
     private func setupUserInterface() {
-        layoutMargins.top = 10
+        layoutMargins.top = Constants.verticalSpacing
 
         emojiButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(emojiButton)
