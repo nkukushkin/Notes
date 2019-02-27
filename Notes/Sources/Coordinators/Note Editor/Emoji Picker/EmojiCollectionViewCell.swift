@@ -18,7 +18,11 @@ class EmojiCollectionViewCell: UICollectionViewCell {
     }()
 
     private func setupUserInterface() {
-        contentView.embedSubview(emojiLabel)
+        emojiLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(emojiLabel)
+        NSLayoutConstraint.activate(
+            emojiLabel.edgesAnchor.constraints(equalTo: contentView.edgesAnchor)
+        )
     }
 
     private func updateUserInterface() {

@@ -32,12 +32,14 @@ class NoteEditorViewController: UIViewController {
         scrollView.keyboardDismissMode = .interactive
         scrollView.alwaysBounceVertical = true
 
+        noteEditorView.translatesAutoresizingMaskIntoConstraints = false
         noteEditorView.preservesSuperviewLayoutMargins = true
-        scrollView.embedSubview(noteEditorView)
-        noteEditorView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        noteEditorView.heightAnchor.constraint(
-            greaterThanOrEqualTo: scrollView.layoutMarginsGuide.heightAnchor
-        ).isActive = true
+        scrollView.addSubview(noteEditorView)
+        NSLayoutConstraint.activate([
+                noteEditorView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+                noteEditorView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.layoutMarginsGuide.heightAnchor)
+            ] + noteEditorView.edgesAnchor.constraints(equalTo: scrollView.edgesAnchor)
+        )
     }
 
     override func viewDidLoad() {
