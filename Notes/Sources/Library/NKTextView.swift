@@ -87,6 +87,7 @@ class NKTextView: UITextView {
 
     private func updateTextContinerInsets() {
         textContainerInset = layoutMargins
+        invalidateIntrinsicContentSize()
     }
 
     // MARK: - Initialization
