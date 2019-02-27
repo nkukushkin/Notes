@@ -12,7 +12,7 @@ class NotesCoordinator: Coordinator {
     // MARK: - Note List View Controller
 
     private lazy var newNoteBarButtonItem = UIBarButtonItem(
-        barButtonSystemItem: .add,
+        barButtonSystemItem: .compose,
         target: self,
         action: #selector(showNewNoteCoordinator)
     )
