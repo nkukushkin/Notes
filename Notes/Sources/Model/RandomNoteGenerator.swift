@@ -16,18 +16,17 @@ class RandomNoteGenerator {
         "❤️"
     ]
 
-    private let strings = [
+    private let titles = [
         "Hi",
         "Hello!",
         "I'm a note!",
         "YOLO!",
         "No.",
         "Kek",
-        "Lorem ipsum",
         "Subscribe",
         "To",
         "Pewdiepie",
-        "Pokèmon",
+        "Pokémon",
         "FBI",
         "Groceries",
         "To Do",
@@ -36,10 +35,16 @@ class RandomNoteGenerator {
         "Sample"
     ]
 
+    private func randomBody() -> String {
+        return [String](repeating: "Lorem ipsum. ", count: .random(in: 1...100))
+            .joined()
+            .trimmingCharacters(in: .whitespaces)
+    }
+
     func generateNote() -> Note {
         let emoji = emojis.randomElement() ?? ""
-        let title = strings.randomElement() ?? ""
-        let body = strings.randomElement() ?? ""
+        let title = titles.randomElement() ?? ""
+        let body = randomBody()
         return Note(icon: emoji, title: title, body: body)
     }
 
