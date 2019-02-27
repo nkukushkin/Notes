@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		113E55172223EC740052F631 /* UIStackView+ArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */; };
 		113E55192223F23E0052F631 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E55182223F23E0052F631 /* NoteEditorView.swift */; };
+		113E551E22252E1D0052F631 /* EdgesAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E551D22252E1D0052F631 /* EdgesAnchor.swift */; };
 		116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4BD221D65BA00E6AA29 /* Emojis.swift */; };
 		116CE4C2221EA3A600E6AA29 /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4C1221EA3A600E6AA29 /* Swizzling.swift */; };
 		116CE4C5221EA7B000E6AA29 /* UIViewController+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4C4221EA7B000E6AA29 /* UIViewController+Swizzle.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+ArrangedSubviews.swift"; sourceTree = "<group>"; };
 		113E55182223F23E0052F631 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
+		113E551D22252E1D0052F631 /* EdgesAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesAnchor.swift; sourceTree = "<group>"; };
 		116CE4BD221D65BA00E6AA29 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		116CE4C1221EA3A600E6AA29 /* Swizzling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
 		116CE4C4221EA7B000E6AA29 /* UIViewController+Swizzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swizzle.swift"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				11CE58A6221BFF2E003867F1 /* TimerController.swift */,
 				83B6945D2212EC6E0078B959 /* NKTextView.swift */,
 				8327F8C02216B0C6004CEE01 /* Observable.swift */,
+				113E551D22252E1D0052F631 /* EdgesAnchor.swift */,
 				83B6944D2211943F0078B959 /* Extensions */,
 				116CE4C3221EA78F00E6AA29 /* Swizzling */,
 			);
@@ -312,6 +315,7 @@
 				11A493EA221AE9B2004B4E01 /* EmojiCollectionViewCell.swift in Sources */,
 				8327F8C12216B0C6004CEE01 /* Observable.swift in Sources */,
 				83B694582212A4200078B959 /* NewNoteCoordinator.swift in Sources */,
+				113E551E22252E1D0052F631 /* EdgesAnchor.swift in Sources */,
 				11A493DF221AD4D1004B4E01 /* EmojiPickerViewController.swift in Sources */,
 				11BF9D6122203B4700CDEC51 /* String+CharacterSet.swift in Sources */,
 				113E55192223F23E0052F631 /* NoteEditorView.swift in Sources */,
