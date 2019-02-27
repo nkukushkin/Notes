@@ -2,33 +2,6 @@ import UIKit
 
 private let noteCellIdentifier = "NoteCell"
 
-//class NoteListViewModel {
-//
-//    private let noteStorage: NoteStorage
-//
-//    // MARK: - Observation
-//
-//    private var noteStorageObservationToken: NoteStorage.ObservationToken?
-//
-//    private func startObservingNoteStorage() {
-//        let observation: NoteStorage.Observation = { _, new in
-//            print("new notes: \(new)")
-//        }
-//        noteStorageObservationToken = noteStorage.addObservation(observation)
-//    }
-//
-//    private func stopObservingNoteStorage() {
-//        guard let token = noteStorageObservationToken else { return }
-//        noteStorage.removeObservation(for: token)
-//    }
-//
-//    // MARK: - Lifecycle
-//
-//    init(noteStorage: NoteStorage) {
-//        self.noteStorage = noteStorage
-//    }
-//}
-
 class NoteListViewController: UITableViewController {
 
     var notes: [Note] {
@@ -75,7 +48,7 @@ extension NoteListViewController {
         let note = notes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: noteCellIdentifier, for: indexPath)
 
-        cell.textLabel?.text = "\(note.emoji) \(note.title) \(note.body)"
+        cell.textLabel?.text = "\(note.emoji) \(note.title)"
         cell.accessoryType = .disclosureIndicator
 
         return cell
