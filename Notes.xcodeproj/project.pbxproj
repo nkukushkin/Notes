@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110A209F222867BF0055A19C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110A209D222867BF0055A19C /* Localizable.strings */; };
+		110A20A2222868520055A19C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110A20A0222868520055A19C /* InfoPlist.strings */; };
 		113E55172223EC740052F631 /* UIStackView+ArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */; };
 		113E55192223F23E0052F631 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E55182223F23E0052F631 /* NoteEditorView.swift */; };
 		113E551E22252E1D0052F631 /* EdgesAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E551D22252E1D0052F631 /* EdgesAnchor.swift */; };
@@ -18,8 +20,6 @@
 		11A493EA221AE9B2004B4E01 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */; };
 		11A493EC221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493EB221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift */; };
 		11AE313E2228335B00F050FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AE313D2228335B00F050FE /* LaunchScreen.storyboard */; };
-		11AE314B2228378300F050FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11AE31492228378300F050FE /* Localizable.strings */; };
-		11AE314E2228378300F050FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11AE314C2228378300F050FE /* InfoPlist.strings */; };
 		11BF9D6122203B4700CDEC51 /* String+CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D6022203B4700CDEC51 /* String+CharacterSet.swift */; };
 		11BF9D6322203CD800CDEC51 /* NSRange+Zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D6222203CD800CDEC51 /* NSRange+Zero.swift */; };
 		11BF9D742221C6C600CDEC51 /* UIFont+SymbolicTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D732221C6C600CDEC51 /* UIFont+SymbolicTraits.swift */; };
@@ -44,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		110A209E222867BF0055A19C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		110A20A1222868520055A19C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+ArrangedSubviews.swift"; sourceTree = "<group>"; };
 		113E55182223F23E0052F631 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
 		113E551D22252E1D0052F631 /* EdgesAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesAnchor.swift; sourceTree = "<group>"; };
@@ -55,8 +57,6 @@
 		11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		11A493EB221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewLayout.swift; sourceTree = "<group>"; };
 		11AE313D2228335B00F050FE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		11AE314A2228378300F050FE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		11AE314D2228378300F050FE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11BF9D6022203B4700CDEC51 /* String+CharacterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterSet.swift"; sourceTree = "<group>"; };
 		11BF9D6222203CD800CDEC51 /* NSRange+Zero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Zero.swift"; sourceTree = "<group>"; };
 		11BF9D732221C6C600CDEC51 /* UIFont+SymbolicTraits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+SymbolicTraits.swift"; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				83B6943822118C200078B959 /* Info.plist */,
-				11AE314C2228378300F050FE /* InfoPlist.strings */,
-				11AE31492228378300F050FE /* Localizable.strings */,
+				110A20A0222868520055A19C /* InfoPlist.strings */,
+				110A209D222867BF0055A19C /* Localizable.strings */,
 				83B6943322118C200078B959 /* Assets.xcassets */,
 				11AE313D2228335B00F050FE /* LaunchScreen.storyboard */,
 			);
@@ -300,8 +300,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				11AE313E2228335B00F050FE /* LaunchScreen.storyboard in Resources */,
-				11AE314E2228378300F050FE /* InfoPlist.strings in Resources */,
-				11AE314B2228378300F050FE /* Localizable.strings in Resources */,
+				110A20A2222868520055A19C /* InfoPlist.strings in Resources */,
+				110A209F222867BF0055A19C /* Localizable.strings in Resources */,
 				83B6943422118C200078B959 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,18 +349,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		11AE31492228378300F050FE /* Localizable.strings */ = {
+		110A209D222867BF0055A19C /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				11AE314A2228378300F050FE /* ru */,
+				110A209E222867BF0055A19C /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		11AE314C2228378300F050FE /* InfoPlist.strings */ = {
+		110A20A0222868520055A19C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				11AE314D2228378300F050FE /* ru */,
+				110A20A1222868520055A19C /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
