@@ -1,5 +1,12 @@
 import UIKit
 
+/*
+ NoteEditorCoordinator manages the flow between NoteEditorViewController
+ and EmojiPickerViewController, where user can tap an emoji in the former and
+ choose a new one in the latter.
+
+ This cooridnator assumes that it’s contained in a UINavigationController.
+ */
 class NoteEditorCoordinator: Coordinator {
     private(set) var note: Note {
         didSet {
@@ -12,6 +19,8 @@ class NoteEditorCoordinator: Coordinator {
 
     // MARK: - NoteEditorViewController
 
+    // This view controller is embedded in the coordinator,
+    // so it will never go away, therefor we can make it implicitly unwrapped.
     private weak var noteEditorViewController: NoteEditorViewController!
 
     private func showNoteEditorViewController() {

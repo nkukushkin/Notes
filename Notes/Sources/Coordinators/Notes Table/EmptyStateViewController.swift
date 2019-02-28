@@ -2,17 +2,17 @@ import UIKit
 
 class EmptyStateViewController: UIViewController {
 
-    var addNoteHandler: (() -> Void)?
+    var addNewNoteHandler: (() -> Void)?
 
     // MARK: - Actions
 
     @objc
-    private func addNoteButtonTapped() {
-        addNoteHandler?()
+    private func newNoteButtonTapped() {
+        addNewNoteHandler?()
     }
 
     private func setupActions() {
-        addNoteButton.addTarget(self, action: #selector(addNoteButtonTapped), for: .touchUpInside)
+        newNoteButton.addTarget(self, action: #selector(newNoteButtonTapped), for: .touchUpInside)
     }
 
     // MARK: - User Interface
@@ -20,14 +20,15 @@ class EmptyStateViewController: UIViewController {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.text = LocalizedStrings.zeroNotes
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
 
-    private lazy var addNoteButton: UIButton = {
+    private lazy var newNoteButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(LocalizedStrings.addNote, for: .normal)
+        button.setTitle(LocalizedStrings.addNewNote, for: .normal)
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .subheadline)
         return button
     }()
@@ -35,8 +36,9 @@ class EmptyStateViewController: UIViewController {
     private func setupUserInterface() {
         view.backgroundColor = .white
 
-        let stack = UIStackView(arrangedSubviews: [label, addNoteButton])
+        let stack = UIStackView(arrangedSubviews: [label, newNoteButton])
         stack.axis = .vertical
+        stack.spacing = 4
 
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
@@ -44,8 +46,8 @@ class EmptyStateViewController: UIViewController {
         NSLayoutConstraint.activate(
             stack.edgesAnchor.constraints(lessThanOrEqualTo: guide.edgesAnchor)
             + [
-                stack.centerYAnchor.constraint(equalTo: guide.centerYAnchor),
-                stack.centerXAnchor.constraint(equalTo: guide.centerXAnchor)
+                stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                stack.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ]
         )
     }
@@ -69,14 +71,14 @@ private enum LocalizedStrings {
     static var zeroNotes: String {
         return NSLocalizedString(
             "You have 👌 notes",
-            comment: "Title for the screen that tells user that he has no notes."
+            comment: "Title for the empty state screen that tells the user that he has no notes."
         )
     }
 
-    static var addNote: String {
+    static var addNewNote: String {
         return NSLocalizedString(
             "Compose",
-            comment: "Title for button that adds a new note."
+            comment: "Title for button on the empty state screen that adds a new note."
         )
     }
 }

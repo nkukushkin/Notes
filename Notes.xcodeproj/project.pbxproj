@@ -179,7 +179,6 @@
 			children = (
 				83B6944022118C4A0078B959 /* Sources */,
 				83B6943E22118C370078B959 /* Resources */,
-				83B6943F22118C3E0078B959 /* Other */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -187,20 +186,13 @@
 		83B6943E22118C370078B959 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83B6943822118C200078B959 /* Info.plist */,
+				11AE314C2228378300F050FE /* InfoPlist.strings */,
+				11AE31492228378300F050FE /* Localizable.strings */,
 				83B6943322118C200078B959 /* Assets.xcassets */,
 				11AE313D2228335B00F050FE /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		83B6943F22118C3E0078B959 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				83B6943822118C200078B959 /* Info.plist */,
-				11AE314C2228378300F050FE /* InfoPlist.strings */,
-				11AE31492228378300F050FE /* Localizable.strings */,
-			);
-			path = Other;
 			sourceTree = "<group>";
 		};
 		83B6944022118C4A0078B959 /* Sources */ = {
@@ -498,7 +490,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4X647CT243;
-				INFOPLIST_FILE = "$(SRCROOT)/Notes/Other/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Notes/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,7 +508,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4X647CT243;
-				INFOPLIST_FILE = "$(SRCROOT)/Notes/Other/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Notes/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

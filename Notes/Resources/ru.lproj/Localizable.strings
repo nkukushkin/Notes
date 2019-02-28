@@ -1,4 +1,4 @@
-/* Title for button that adds a new note. */
+/* Title for button on the empty state screen that adds a new note. */
 "Compose" = "Добавить";
 
 /* Placeholder for the field where user can edit note body. */
@@ -13,5 +13,5 @@
 /* Placeholder for the field where user can edit note title. */
 "Untitled" = "Без названия";
 
-/* Title for the screen that tells user that he has no notes. */
+/* Title for the empty state screen that tells the user that he has no notes. */
 "You have 👌 notes" = "У вас 👌 заметок";

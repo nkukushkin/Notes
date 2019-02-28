@@ -1,8 +1,13 @@
 import UIKit
 
+/*
+ NotesTableCoordinator swaps between NotesTableViewController
+ and EmptyStateViewController, depending on whether there are any notes to show.
+ */
 class NotesTableCoordinator: Coordinator {
     var notes: [Note] {
         didSet {
+            guard isViewLoaded else { return }
             updateShownViewController()
         }
     }
@@ -13,16 +18,16 @@ class NotesTableCoordinator: Coordinator {
         }
     }
 
-    var addNoteHandler: (() -> Void)? {
+    var addNewNoteHandler: (() -> Void)? {
         didSet {
-            emptyStateViewController?.addNoteHandler = addNoteHandler
+            emptyStateViewController?.addNewNoteHandler = addNewNoteHandler
         }
     }
 
-    // MARK: - Shown View Controller
-
     private weak var shownViewController: UIViewController!
 
+    // Since we don’t hold any strong references to embedded view controllers,
+    // once the `removeChildAndItsView(_:)` method is called, they are released from memory.
     private func updateShownViewController() {
         if let notesTableViewController = notesTableViewController {
             if notes.isEmpty {
@@ -67,7 +72,7 @@ class NotesTableCoordinator: Coordinator {
 
     func showEmptyStateViewController() {
         let emptyStateViewController = EmptyStateViewController()
-        emptyStateViewController.addNoteHandler = addNoteHandler
+        emptyStateViewController.addNewNoteHandler = addNewNoteHandler
 
         shownViewController = emptyStateViewController
         embedChild(emptyStateViewController, in: view)

@@ -5,6 +5,7 @@ private let noteCellIdentifier = "NoteCell"
 class NotesTableViewController: UITableViewController {
     var notes: [Note] {
         didSet {
+            guard isViewLoaded else { return }
             tableView.reloadData()
         }
     }

@@ -1,5 +1,13 @@
 import UIKit
 
+/*
+ NewNoteCoordinator wraps NoteEditorCoordinator and extends it with
+ a custom navigation title and bar buttons. It also creates the new
+ note that will be edited by the child coordinator.
+
+ This coordinator assumes that it will be presented modally, so it
+ embeds it’s own root navigation controller.
+ */
 class NewNoteCoordinator: Coordinator {
     private lazy var rootNavigationController = UINavigationController()
 
@@ -19,7 +27,7 @@ class NewNoteCoordinator: Coordinator {
         cancelHandler?()
     }
 
-    // MARK: - Note Editor Coordinator
+    // MARK: - Note Editor
 
     private lazy var doneBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .done,
@@ -33,6 +41,8 @@ class NewNoteCoordinator: Coordinator {
         action: #selector(cancel)
     )
 
+    // This coordinator will be at the navigation controller’s root,
+    // and it will never go away, therefore we can make it implicitly unwrapped.
     private weak var noteEditorCoordinator: NoteEditorCoordinator!
 
     private func showNoteEditorCoordinator() {

@@ -9,7 +9,7 @@ class NotesCoordinator: Coordinator {
 
     private let noteStorage: NoteStorage
 
-    // MARK: - Note Table
+    // MARK: - Notes Table
 
     private lazy var newNoteBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .compose,
@@ -17,6 +17,8 @@ class NotesCoordinator: Coordinator {
         action: #selector(showNewNoteCoordinator)
     )
 
+    // This coordinator will be at the navigation controller’s root,
+    // and it will never go away, therefore we can make it implicitly unwrapped.
     private weak var notesTableCoordinator: NotesTableCoordinator!
 
     private func showNotesTableCoordinator() {
@@ -26,7 +28,7 @@ class NotesCoordinator: Coordinator {
         notesTableCoordinator.noteSelectedHanlder = { [weak self] note in
             self?.showNoteEditorCoordinator(for: note)
         }
-        notesTableCoordinator.addNoteHandler = { [weak self] in
+        notesTableCoordinator.addNewNoteHandler = { [weak self] in
             self?.showNewNoteCoordinator()
         }
 
