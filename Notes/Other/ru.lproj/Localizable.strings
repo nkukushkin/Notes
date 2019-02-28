@@ -1,0 +1,17 @@
+/* Title for button that adds a new note. */
+"Compose" = "Добавить";
+
+/* Placeholder for the field where user can edit note body. */
+"Empty note" = "Пустая заметка";
+
+/* Navigation bar title for the screen where user edits a new note. */
+"New Note" = "Новая заметка";
+
+/* Navigation bar title for the screen that shows a list of notes. */
+"Notes" = "Заметки";
+
+/* Placeholder for the field where user can edit note title. */
+"Untitled" = "Без названия";
+
+/* Title for the screen that tells user that he has no notes. */
+"You have 👌 notes" = "У вас 👌 заметок";
