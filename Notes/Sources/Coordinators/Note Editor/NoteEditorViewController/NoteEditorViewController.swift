@@ -13,10 +13,6 @@ class NoteEditorViewController: UIViewController {
 
     // MARK: - User Interface
 
-    var scrollView: UIScrollView {
-        return view as! UIScrollView
-    }
-
     private lazy var noteEditorView: NoteEditorView = NoteEditorView()
 
     private func updateUserInterface() {
@@ -25,6 +21,10 @@ class NoteEditorViewController: UIViewController {
     }
 
     // MARK: - View Lifecycle
+
+    private var scrollView: UIScrollView {
+        return view as! UIScrollView
+    }
 
     override func loadView() {
         view = UIScrollView()

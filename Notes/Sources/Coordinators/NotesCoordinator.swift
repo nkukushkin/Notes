@@ -9,7 +9,7 @@ class NotesCoordinator: Coordinator {
 
     private let noteStorage: NoteStorage
 
-    // MARK: - Note List View Controller
+    // MARK: - Note Table
 
     private lazy var newNoteBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .compose,
@@ -17,24 +17,27 @@ class NotesCoordinator: Coordinator {
         action: #selector(showNewNoteCoordinator)
     )
 
-    private weak var noteListViewController: NoteListViewController!
+    private weak var notesTableCoordinator: NotesTableCoordinator!
 
-    private func showNoteListViewController() {
+    private func showNotesTableCoordinator() {
         let notes = noteStorage.notes
-        let noteListViewController = NoteListViewController(notes: notes)
+        let notesTableCoordinator = NotesTableCoordinator(notes: notes)
 
-        noteListViewController.noteSelectedHanlder = { [weak self] note in
+        notesTableCoordinator.noteSelectedHanlder = { [weak self] note in
             self?.showNoteEditorCoordinator(for: note)
         }
+        notesTableCoordinator.addNoteHandler = { [weak self] in
+            self?.showNewNoteCoordinator()
+        }
 
-        noteListViewController.navigationItem.title = LocalizedStrings.noteListNavigationTitle
-        noteListViewController.navigationItem.rightBarButtonItem = newNoteBarButtonItem
+        notesTableCoordinator.navigationItem.title = LocalizedStrings.noteListNavigationTitle
+        notesTableCoordinator.navigationItem.rightBarButtonItem = newNoteBarButtonItem
 
-        self.noteListViewController = noteListViewController
-        rootNavigationController.pushViewController(noteListViewController, animated: true)
+        self.notesTableCoordinator = notesTableCoordinator
+        rootNavigationController.pushViewController(notesTableCoordinator, animated: true)
     }
 
-    // MARK: - New Note Coordinator
+    // MARK: - New Note
 
     @objc
     private func showNewNoteCoordinator() {
@@ -51,7 +54,7 @@ class NotesCoordinator: Coordinator {
         present(newNoteCoordinator, animated: true)
     }
 
-    // MARK: - Note Editor Coordinator
+    // MARK: - Note Editor
 
     private var openNote: Note?
 
@@ -68,7 +71,7 @@ class NotesCoordinator: Coordinator {
         noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteNoteBarButtonItem
         noteEditorCoordinator.navigationItem.largeTitleDisplayMode = .never
         noteEditorCoordinator.didChangeNoteHandler = { [unowned noteStorage] note in
-            // This is called on every character change in the editor.
+            // This is called on every character change.
             noteStorage.save(note: note)
         }
 
@@ -88,12 +91,12 @@ class NotesCoordinator: Coordinator {
     private func startObservingNoteStorage() {
         let observation: NoteStorage.Observation = { [weak self] _, newNotes in
             guard let self = self else { return }
-            self.noteListViewController.notes = newNotes
+            self.notesTableCoordinator.notes = newNotes
 
             // Pop to list if note was deleted.
             if let openNote = self.openNote, !self.noteStorage.notes.contains(openNote) {
                 self.openNote = nil
-                self.rootNavigationController.popToViewController(self.noteListViewController, animated: true)
+                self.rootNavigationController.popToViewController(self.notesTableCoordinator, animated: true)
             }
         }
         noteStorageObservationToken = noteStorage.addObservation(observation)
@@ -110,7 +113,11 @@ class NotesCoordinator: Coordinator {
     override func loadView() {
         super.loadView()
         embedChild(rootNavigationController, in: view)
-        showNoteListViewController()
+        showNotesTableCoordinator()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         startObservingNoteStorage()
     }
 

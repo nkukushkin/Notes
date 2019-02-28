@@ -36,7 +36,7 @@ class NoteEditorView: UIView {
 
     private let emojiButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = .systemFont(ofSize: 50)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         return button
     }()
 
@@ -54,7 +54,7 @@ class NoteEditorView: UIView {
     private let bodyTextView: NKTextView = {
         let textView = NKTextView()
         textView.isScrollEnabled = false
-        textView.font = .preferredFont(forTextStyle: .body)
+        textView.font = UIFont.preferredFont(forTextStyle: .body)
         textView.placeholder = LocalizedStrings.noteBodyPlaceholder
         return textView
     }()

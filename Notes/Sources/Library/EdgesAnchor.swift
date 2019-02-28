@@ -6,30 +6,30 @@ class EdgesAnchor {
     let trailingAnchor: NSLayoutXAxisAnchor
     let bottomAnchor: NSLayoutYAxisAnchor
 
-    func constraints(equalTo other: EdgesAnchor, constants: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+    func constraints(equalTo other: EdgesAnchor, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         return [
-            leadingAnchor.constraint(equalTo: other.leadingAnchor, constant: constants.left),
-            topAnchor.constraint(equalTo: other.topAnchor, constant: constants.top),
-            trailingAnchor.constraint(equalTo: other.trailingAnchor, constant: constants.right),
-            bottomAnchor.constraint(equalTo: other.bottomAnchor, constant: constants.bottom)
+            other.leadingAnchor.constraint(equalTo: leadingAnchor, constant: insets.left),
+            trailingAnchor.constraint(equalTo: other.trailingAnchor, constant: insets.right),
+            other.topAnchor.constraint(equalTo: topAnchor, constant: insets.top),
+            bottomAnchor.constraint(equalTo: other.bottomAnchor, constant: insets.bottom)
         ]
     }
 
-    func constraints(greaterThanOrEqualTo other: EdgesAnchor, constants: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+    func constraints(greaterThanOrEqualTo other: EdgesAnchor, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         return [
-            leadingAnchor.constraint(greaterThanOrEqualTo: other.leadingAnchor, constant: constants.left),
-            topAnchor.constraint(greaterThanOrEqualTo: other.topAnchor, constant: constants.top),
-            trailingAnchor.constraint(greaterThanOrEqualTo: other.trailingAnchor, constant: constants.right),
-            bottomAnchor.constraint(greaterThanOrEqualTo: other.bottomAnchor, constant: constants.bottom)
+            other.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: insets.left),
+            topAnchor.constraint(greaterThanOrEqualTo: other.topAnchor, constant: insets.top),
+            other.trailingAnchor.constraint(greaterThanOrEqualTo: trailingAnchor, constant: insets.right),
+            bottomAnchor.constraint(greaterThanOrEqualTo: other.bottomAnchor, constant: insets.bottom)
         ]
     }
 
-    func constraints(lessThanOrEqualTo other: EdgesAnchor, constants: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+    func constraints(lessThanOrEqualTo other: EdgesAnchor, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         return [
-            leadingAnchor.constraint(lessThanOrEqualTo: other.leadingAnchor, constant: constants.left),
-            topAnchor.constraint(lessThanOrEqualTo: other.topAnchor, constant: constants.top),
-            trailingAnchor.constraint(lessThanOrEqualTo: other.trailingAnchor, constant: constants.right),
-            bottomAnchor.constraint(lessThanOrEqualTo: other.bottomAnchor, constant: constants.bottom)
+            other.leadingAnchor.constraint(lessThanOrEqualTo: leadingAnchor, constant: insets.left),
+            trailingAnchor.constraint(lessThanOrEqualTo: other.trailingAnchor, constant: insets.right),
+            other.topAnchor.constraint(lessThanOrEqualTo: topAnchor, constant: insets.top),
+            bottomAnchor.constraint(lessThanOrEqualTo: other.bottomAnchor, constant: insets.bottom)
         ]
     }
 

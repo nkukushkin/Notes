@@ -12,7 +12,7 @@ class EmojiCollectionViewCell: UICollectionViewCell {
     private lazy var emojiLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 50)
+        label.font = UIFont.systemFont(ofSize: 50)
         return label
     }()
 

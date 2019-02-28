@@ -2,7 +2,7 @@ import UIKit
 
 private let noteCellIdentifier = "NoteCell"
 
-class NoteListViewController: UITableViewController {
+class NotesTableViewController: UITableViewController {
     var notes: [Note] {
         didSet {
             tableView.reloadData()
@@ -38,7 +38,7 @@ class NoteListViewController: UITableViewController {
 
 // MARK: - UITableViewDataSource
 
-extension NoteListViewController {
+extension NotesTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
     }
@@ -56,7 +56,7 @@ extension NoteListViewController {
 
 // MARK: - UITableViewDelegate
 
-extension NoteListViewController {
+extension NotesTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let note = notes[indexPath.row]
         noteSelectedHanlder?(note)

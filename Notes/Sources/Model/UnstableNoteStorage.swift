@@ -5,8 +5,8 @@ class UnstableNoteStorage: NoteStorage {
     private let noteGenerator: RandomNoteGenerator
 
     private enum Constants {
-        static let maxNotes = 5
-        static let mutationInterval: TimeInterval = 10
+        static let maxNotes = 1
+        static let mutationInterval: TimeInterval = 4
     }
 
     // MARK: - Actions
