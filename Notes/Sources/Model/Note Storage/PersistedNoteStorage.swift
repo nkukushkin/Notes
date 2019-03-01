@@ -3,6 +3,7 @@ class PersistedNoteStorage: NoteStorage {
 
     let notes: Observable<Set<Note>>
 
+    /// Saving notes with same IDs will overwrite them.
     func save(note: Note) {
         var mutableNotes = notes.value
         mutableNotes.remove(note) // Sets don’t replace items
