@@ -22,8 +22,9 @@ class NotesCoordinator: Coordinator {
     private weak var notesTableCoordinator: NotesTableCoordinator!
 
     private func showNotesTableCoordinator() {
-        let notes = noteStorage.notes
-        let notesTableCoordinator = NotesTableCoordinator(notes: notes)
+        let notes = noteStorage.notes.value
+        let viewData = NotesTableCoordinator.ViewData(notes: notes)
+        let notesTableCoordinator = NotesTableCoordinator(viewData: viewData)
 
         notesTableCoordinator.noteSelectedHanlder = { [weak self] note in
             self?.showNoteEditorCoordinator(for: note)
@@ -32,7 +33,7 @@ class NotesCoordinator: Coordinator {
             self?.showNewNoteCoordinator()
         }
 
-        notesTableCoordinator.navigationItem.title = LocalizedStrings.noteListNavigationTitle
+        notesTableCoordinator.navigationItem.title = LocalizedStrings.notesTableNavigationTitle
         notesTableCoordinator.navigationItem.rightBarButtonItem = newNoteBarButtonItem
 
         self.notesTableCoordinator = notesTableCoordinator
@@ -45,8 +46,8 @@ class NotesCoordinator: Coordinator {
     private func showNewNoteCoordinator() {
         let newNoteCoordinator = NewNoteCoordinator()
 
-        newNoteCoordinator.didCreateNoteHandler = { [unowned noteStorage, unowned newNoteCoordinator] note in
-            noteStorage.save(note: note)
+        newNoteCoordinator.didCreateNoteHandler = { [weak self, unowned newNoteCoordinator] note in
+            self?.noteStorage.save(note: note)
             newNoteCoordinator.dismiss(animated: true)
         }
         newNoteCoordinator.cancelHandler = { [unowned newNoteCoordinator] in
@@ -58,56 +59,56 @@ class NotesCoordinator: Coordinator {
 
     // MARK: - Note Editor
 
-    private var openNote: Note?
-
-    private lazy var deleteNoteBarButtonItem = UIBarButtonItem(
+    private lazy var deleteEditedNoteBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .trash,
         target: self,
-        action: #selector(deleteOpenNote)
+        action: #selector(deleteEditedNote)
     )
 
-    private func showNoteEditorCoordinator(for note: Note) {
-        openNote = note
-        let noteEditorCoordinator = NoteEditorCoordinator(note: note)
-
-        noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteNoteBarButtonItem
-        noteEditorCoordinator.navigationItem.largeTitleDisplayMode = .never
-        noteEditorCoordinator.didChangeNoteHandler = { [unowned noteStorage] note in
-            // This is called on every character change.
-            noteStorage.save(note: note)
-        }
-
-        rootNavigationController.pushViewController(noteEditorCoordinator, animated: true)
+    @objc
+    private func deleteEditedNote() {
+        guard let editedNote = editedNote else { return }
+        noteStorage.delete(note: editedNote)
     }
 
-    @objc
-    private func deleteOpenNote() {
-        guard let openNote = openNote else { return }
-        noteStorage.delete(note: openNote)
+    private var editedNote: Note? {
+        return noteEditorCoordinator?.note
+    }
+
+    private weak var noteEditorCoordinator: NoteEditorCoordinator?
+
+    private func showNoteEditorCoordinator(for note: Note) {
+        let noteEditorCoordinator = NoteEditorCoordinator(note: note)
+
+        noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteEditedNoteBarButtonItem
+        noteEditorCoordinator.navigationItem.largeTitleDisplayMode = .never
+        noteEditorCoordinator.didChangeNoteHandler = { [weak self] note in
+            // This is called on every character change.
+            self?.noteStorage.save(note: note)
+        }
+
+        self.noteEditorCoordinator = noteEditorCoordinator
+        rootNavigationController.pushViewController(noteEditorCoordinator, animated: true)
     }
 
     // MARK: - Observation
 
-    private var noteStorageObservationToken: NoteStorage.ObservationToken?
+    private var notesObservationToken: ScopedObservationToken?
 
-    private func startObservingNoteStorage() {
-        let observation: NoteStorage.Observation = { [weak self] _, newNotes in
-            guard let self = self else { return }
-            self.notesTableCoordinator.notes = newNotes
-
-            // Pop to list if note was deleted.
-            if let openNote = self.openNote, !self.noteStorage.notes.contains(openNote) {
-                self.openNote = nil
-                self.rootNavigationController.popToViewController(self.notesTableCoordinator, animated: true)
-            }
+    private func beginObservingNotes() {
+        notesObservationToken = noteStorage.notes.observe { [weak self] oldNotes, newNotes in
+            self?.handleNotesChange(oldNotes: oldNotes, newNotes: newNotes)
         }
-        noteStorageObservationToken = noteStorage.addObservation(observation)
     }
 
-    private func stopObservingNoteStorage() {
-        guard let token = noteStorageObservationToken else { return }
-        noteStorage.removeObservation(for: token)
-        noteStorageObservationToken = nil
+    private func handleNotesChange(oldNotes: Set<Note>, newNotes: Set<Note>) {
+        let viewData = NotesTableCoordinator.ViewData(notes: newNotes)
+        notesTableCoordinator.viewData = viewData
+
+        // Pop note editor if the note it’s editing gets deleted.
+        if let editedNote = editedNote, !newNotes.contains(editedNote) {
+            rootNavigationController.popToViewController(notesTableCoordinator, animated: true)
+        }
     }
 
     // MARK: - View Lifecycle
@@ -118,9 +119,9 @@ class NotesCoordinator: Coordinator {
         showNotesTableCoordinator()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        startObservingNoteStorage()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        beginObservingNotes()
     }
 
     // MARK: - Initialization
@@ -129,19 +130,15 @@ class NotesCoordinator: Coordinator {
         self.noteStorage = noteStorage
         super.init()
     }
-
-    deinit {
-        stopObservingNoteStorage()
-    }
 }
 
 // MARK: - Localized Strings
 
 private enum LocalizedStrings {
-    static var noteListNavigationTitle: String {
+    static var notesTableNavigationTitle: String {
         return NSLocalizedString(
             "Notes",
-            comment: "Navigation bar title for the screen that shows a list of notes."
+            comment: "Navigation bar title for the screen that shows table of notes."
         )
     }
 }

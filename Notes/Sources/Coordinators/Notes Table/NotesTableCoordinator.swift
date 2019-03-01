@@ -5,7 +5,20 @@ import UIKit
  and EmptyStateViewController, depending on whether there are any notes to show.
  */
 class NotesTableCoordinator: Coordinator {
-    var notes: [Note] {
+    struct ViewData {
+        let notes: [Note]
+
+        enum Mode {
+            case emptyState
+            case notesTable
+        }
+
+        var mode: Mode {
+            return notes.isEmpty ? .emptyState : .notesTable
+        }
+    }
+
+    var viewData: ViewData {
         didSet {
             guard isViewLoaded else { return }
             updateShownViewController()
@@ -30,22 +43,28 @@ class NotesTableCoordinator: Coordinator {
     // once the `removeChildAndItsView(_:)` method is called, they are released from memory.
     private func updateShownViewController() {
         if let notesTableViewController = notesTableViewController {
-            if notes.isEmpty {
+            switch viewData.mode {
+            case .notesTable:
+                notesTableViewController.notes = viewData.notes
+            case .emptyState:
                 removeChildAndItsView(notesTableViewController)
                 showEmptyStateViewController()
-            } else {
-                notesTableViewController.notes = notes
             }
         } else if let emptyStateViewController = emptyStateViewController {
-            if !notes.isEmpty {
+            switch viewData.mode {
+            case .notesTable:
                 removeChildAndItsView(emptyStateViewController)
                 showNotesTableViewController()
+            case .emptyState:
+                break // keep showing `emptyStateViewController`
             }
         } else {
-            if notes.isEmpty {
-                showEmptyStateViewController()
-            } else {
+            // If we weren’t showing anything — show initial view controller.
+            switch viewData.mode {
+            case .notesTable:
                 showNotesTableViewController()
+            case .emptyState:
+                showEmptyStateViewController()
             }
         }
     }
@@ -57,7 +76,7 @@ class NotesTableCoordinator: Coordinator {
     }
 
     func showNotesTableViewController() {
-        let notesTableViewController = NotesTableViewController(notes: notes)
+        let notesTableViewController = NotesTableViewController(notes: viewData.notes)
         notesTableViewController.noteSelectedHanlder = noteSelectedHanlder
 
         shownViewController = notesTableViewController
@@ -87,8 +106,17 @@ class NotesTableCoordinator: Coordinator {
 
     // MARK: - Initialization
 
-    init(notes: [Note]) {
-        self.notes = notes
+    init(viewData: ViewData) {
+        self.viewData = viewData
         super.init()
+    }
+}
+
+// MARK: - ViewData + Set<Note>
+
+extension NotesTableCoordinator.ViewData {
+    init(notes: Set<Note>) {
+        self.notes = Array(notes)
+            .sorted { $0.dateOfCreation > $1.dateOfCreation }
     }
 }

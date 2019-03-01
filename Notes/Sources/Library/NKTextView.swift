@@ -1,6 +1,9 @@
 import UIKit
 
-/// TextView that positions its contents using layoutMargins and can show a placeholder.
+/**
+ UITextView subclass that adjusts textContainerInsets
+ using layoutMargins and can show a placeholder.
+ */
 class NKTextView: UITextView {
     override var text: String! {
         didSet { updatePlaceholderLabel() }
@@ -58,6 +61,7 @@ class NKTextView: UITextView {
             placeholderLabel.topAnchor.constraint(equalTo: guide.topAnchor),
             guide.bottomAnchor.constraint(greaterThanOrEqualTo: placeholderLabel.bottomAnchor)
         ])
+        updatePlaceholderLabel()
     }
 
     // MARK: - Observation
@@ -96,7 +100,6 @@ class NKTextView: UITextView {
         textContainer.lineFragmentPadding = 0 // remove unnecessary padding
         updateTextContinerInsets()
         setupPlaceholderLabel()
-        updatePlaceholderLabel()
         observeTextChanges()
     }
 

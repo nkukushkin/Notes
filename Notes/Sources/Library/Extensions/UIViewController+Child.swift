@@ -15,7 +15,7 @@ extension UIViewController {
     func embedChild(_ child: UIViewController, in container: UIView) {
         addChild(child, addChildView: { childView in
             childView.translatesAutoresizingMaskIntoConstraints = false
-            childView.frame = container.bounds // sometimes helps with UIViewController magic
+            childView.frame = container.bounds // helps with UIViewController smarts
             container.addSubview(childView)
             NSLayoutConstraint.activate(
                 childView.edgesAnchor.constraints(equalTo: container.edgesAnchor)

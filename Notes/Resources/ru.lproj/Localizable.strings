@@ -7,7 +7,7 @@
 /* Navigation bar title for the screen where user edits a new note. */
 "New Note" = "Новая заметка";
 
-/* Navigation bar title for the screen that shows a list of notes. */
+/* Navigation bar title for the screen that shows table of notes. */
 "Notes" = "Заметки";
 
 /* Placeholder for the field where user can edit note title. */
