@@ -11,6 +11,7 @@ class NotesTableViewController: UITableViewController {
     }
 
     var noteSelectedHanlder: ((Note) -> Void)?
+    var noteDeletedHandler: ((Note) -> Void)?
 
     // MARK: - View Lifecycle
 
@@ -52,6 +53,17 @@ extension NotesTableViewController {
         cell.accessoryType = .disclosureIndicator
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let note = notes[indexPath.row]
+            noteDeletedHandler?(note)
+        }
     }
 }
 

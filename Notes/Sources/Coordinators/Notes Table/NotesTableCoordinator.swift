@@ -31,6 +31,12 @@ class NotesTableCoordinator: Coordinator {
         }
     }
 
+    var noteDeletedHandler: ((Note) -> Void)? {
+        didSet {
+            notesTableViewController?.noteDeletedHandler = noteDeletedHandler
+        }
+    }
+
     var addNewNoteHandler: (() -> Void)? {
         didSet {
             emptyStateViewController?.addNewNoteHandler = addNewNoteHandler
@@ -78,6 +84,7 @@ class NotesTableCoordinator: Coordinator {
     func showNotesTableViewController() {
         let notesTableViewController = NotesTableViewController(notes: viewData.notes)
         notesTableViewController.noteSelectedHanlder = noteSelectedHanlder
+        notesTableViewController.noteDeletedHandler = noteDeletedHandler
 
         shownViewController = notesTableViewController
         embedChild(notesTableViewController, in: view)

@@ -29,6 +29,9 @@ class NotesCoordinator: Coordinator {
         notesTableCoordinator.noteSelectedHanlder = { [weak self] note in
             self?.showNoteEditorCoordinator(for: note)
         }
+        notesTableCoordinator.noteDeletedHandler = { [weak self] note in
+            self?.noteStorage.delete(note: note)
+        }
         notesTableCoordinator.addNewNoteHandler = { [weak self] in
             self?.showNewNoteCoordinator()
         }
