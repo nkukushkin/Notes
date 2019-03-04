@@ -13,8 +13,8 @@ class MockPersistenceService: PersistenceService {
     }
 
     convenience init() {
-        self.init(location: URL(string: "www.example.com")!)
+        self.init(url: URL(string: "www.example.com")!)
     }
 
-    required init(location: URL) {}
+    required init(url: URL) {}
 }

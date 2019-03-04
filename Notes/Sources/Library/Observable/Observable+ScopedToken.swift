@@ -1,4 +1,4 @@
-/// When this token gets deallocated observation stops.
+/// When this token gets deallocated, observation stops.
 class ScopedObservationToken {
     fileprivate let inner: ObservationToken
     private let deinitHandler: (ObservationToken) -> Void
