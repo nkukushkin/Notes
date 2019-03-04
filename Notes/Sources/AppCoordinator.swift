@@ -11,8 +11,8 @@ class AppCoordinator {
             appropriateFor: nil,
             create: true
         )
-        let location = documentsFolder.appendingPathComponent(fileName)
-        return JSONPersistenceService(location: location)
+        let url = documentsFolder.appendingPathComponent(fileName)
+        return JSONPersistenceService(url: url)
     }()
 
     private lazy var noteStorage: NoteStorage = {
