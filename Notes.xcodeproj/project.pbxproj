@@ -23,11 +23,11 @@
 		116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4BD221D65BA00E6AA29 /* Emojis.swift */; };
 		116CE4C2221EA3A600E6AA29 /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4C1221EA3A600E6AA29 /* Swizzling.swift */; };
 		116CE4C5221EA7B000E6AA29 /* UIViewController+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116CE4C4221EA7B000E6AA29 /* UIViewController+Swizzle.swift */; };
+		1183800F222D5DAA009D4341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11838011222D5DAA009D4341 /* LaunchScreen.storyboard */; };
 		11A493DF221AD4D1004B4E01 /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493DE221AD4D1004B4E01 /* EmojiPickerViewController.swift */; };
 		11A493E5221AE084004B4E01 /* NoteEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493E4221AE084004B4E01 /* NoteEditorCoordinator.swift */; };
 		11A493EA221AE9B2004B4E01 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */; };
 		11A493EC221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A493EB221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift */; };
-		11AE313E2228335B00F050FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AE313D2228335B00F050FE /* LaunchScreen.storyboard */; };
 		11BF9D6122203B4700CDEC51 /* String+CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D6022203B4700CDEC51 /* String+CharacterSet.swift */; };
 		11BF9D6322203CD800CDEC51 /* NSRange+Zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D6222203CD800CDEC51 /* NSRange+Zero.swift */; };
 		11BF9D742221C6C600CDEC51 /* UIFont+SymbolicTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF9D732221C6C600CDEC51 /* UIFont+SymbolicTraits.swift */; };
@@ -76,11 +76,11 @@
 		116CE4BD221D65BA00E6AA29 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		116CE4C1221EA3A600E6AA29 /* Swizzling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
 		116CE4C4221EA7B000E6AA29 /* UIViewController+Swizzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swizzle.swift"; sourceTree = "<group>"; };
+		11838010222D5DAA009D4341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11A493DE221AD4D1004B4E01 /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
 		11A493E4221AE084004B4E01 /* NoteEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorCoordinator.swift; sourceTree = "<group>"; };
 		11A493E9221AE9B2004B4E01 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		11A493EB221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewLayout.swift; sourceTree = "<group>"; };
-		11AE313D2228335B00F050FE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11BF9D6022203B4700CDEC51 /* String+CharacterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterSet.swift"; sourceTree = "<group>"; };
 		11BF9D6222203CD800CDEC51 /* NSRange+Zero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Zero.swift"; sourceTree = "<group>"; };
 		11BF9D732221C6C600CDEC51 /* UIFont+SymbolicTraits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+SymbolicTraits.swift"; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 				110A20A0222868520055A19C /* InfoPlist.strings */,
 				110A209D222867BF0055A19C /* Localizable.strings */,
 				83B6943322118C200078B959 /* Assets.xcassets */,
-				11AE313D2228335B00F050FE /* LaunchScreen.storyboard */,
+				11838011222D5DAA009D4341 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -410,7 +410,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11AE313E2228335B00F050FE /* LaunchScreen.storyboard in Resources */,
+				1183800F222D5DAA009D4341 /* LaunchScreen.storyboard in Resources */,
 				110A20A2222868520055A19C /* InfoPlist.strings in Resources */,
 				110A209F222867BF0055A19C /* Localizable.strings in Resources */,
 				83B6943422118C200078B959 /* Assets.xcassets in Resources */,
@@ -493,6 +493,14 @@
 				110A20A1222868520055A19C /* ru */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		11838011222D5DAA009D4341 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11838010222D5DAA009D4341 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
