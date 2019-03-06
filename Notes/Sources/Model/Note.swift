@@ -18,21 +18,9 @@ struct Note {
     }
 }
 
-// MARK: - Equatable (Identity)
+// MARK: - Equatable
 
-extension Note: Equatable {
-    public static func == (lhs: Note, rhs: Note) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
-// MARK: - Hashable
-
-extension Note: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
+extension Note: Equatable {}
 
 // MARK: - Codable
 

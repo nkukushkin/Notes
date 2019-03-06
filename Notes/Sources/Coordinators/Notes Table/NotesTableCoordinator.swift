@@ -16,6 +16,10 @@ class NotesTableCoordinator: Coordinator {
         var mode: Mode {
             return notes.isEmpty ? .emptyState : .notesTable
         }
+
+        init(notes: [Note]) {
+            self.notes = notes.sorted { $0.dateOfCreation > $1.dateOfCreation }
+        }
     }
 
     var viewData: ViewData {
@@ -116,14 +120,5 @@ class NotesTableCoordinator: Coordinator {
     init(viewData: ViewData) {
         self.viewData = viewData
         super.init()
-    }
-}
-
-// MARK: - ViewData + Set<Note>
-
-extension NotesTableCoordinator.ViewData {
-    init(notes: Set<Note>) {
-        self.notes = Array(notes)
-            .sorted { $0.dateOfCreation > $1.dateOfCreation }
     }
 }

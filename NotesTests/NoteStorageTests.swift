@@ -13,7 +13,7 @@ class NoteStorageTests: XCTestCase {
 
         let storageNote = notesStorage.notes.value.first!
         let persistedNote = mockPersistenceService.model!.first!
-        XCTAssert(note.isEqualIdentityAndContents(to: storageNote))
-        XCTAssert(note.isEqualIdentityAndContents(to: persistedNote))
+        XCTAssert(note == storageNote)
+        XCTAssert(note == persistedNote)
     }
 }

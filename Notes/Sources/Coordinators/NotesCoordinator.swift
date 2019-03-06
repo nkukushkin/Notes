@@ -86,7 +86,7 @@ class NotesCoordinator: Coordinator {
         noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteEditedNoteBarButtonItem
         noteEditorCoordinator.navigationItem.largeTitleDisplayMode = .never
         noteEditorCoordinator.didChangeNoteHandler = { [weak self] note in
-            // This is called on every character change.
+            // Called on every character change.
             self?.noteStorage.save(note: note)
         }
 
@@ -104,7 +104,7 @@ class NotesCoordinator: Coordinator {
         }
     }
 
-    private func handleNotesChange(oldNotes: Set<Note>, newNotes: Set<Note>) {
+    private func handleNotesChange(oldNotes: [Note], newNotes: [Note]) {
         let viewData = NotesTableCoordinator.ViewData(notes: newNotes)
         notesTableCoordinator.viewData = viewData
 

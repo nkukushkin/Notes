@@ -2,10 +2,10 @@ import Foundation
 @testable import Notes
 
 class MockPersistenceService: PersistenceService {
-    var model: Set<Note>?
+    var model: [Note]?
 
     func save<Model>(_ model: Model) where Model : Decodable, Model : Encodable {
-        self.model = model as? Set<Note>
+        self.model = model as? [Note]
     }
 
     func load<Model>() -> Model? where Model : Decodable, Model : Encodable {

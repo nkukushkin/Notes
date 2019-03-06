@@ -16,7 +16,6 @@
 		1131EDE02229756700D7DBC7 /* JSONPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131EDDF2229756700D7DBC7 /* JSONPersistenceService.swift */; };
 		1131EDEA2229772B00D7DBC7 /* NoteStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131EDE92229772B00D7DBC7 /* NoteStorageTests.swift */; };
 		1131EDF222297D0A00D7DBC7 /* MockPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131EDF122297D0A00D7DBC7 /* MockPersistenceService.swift */; };
-		1131EDF422297D4500D7DBC7 /* Note+EqualContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131EDF322297D4500D7DBC7 /* Note+EqualContents.swift */; };
 		113E55172223EC740052F631 /* UIStackView+ArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */; };
 		113E55192223F23E0052F631 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E55182223F23E0052F631 /* NoteEditorView.swift */; };
 		113E551E22252E1D0052F631 /* EdgesAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E551D22252E1D0052F631 /* EdgesAnchor.swift */; };
@@ -70,7 +69,6 @@
 		1131EDE92229772B00D7DBC7 /* NoteStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStorageTests.swift; sourceTree = "<group>"; };
 		1131EDEB2229772B00D7DBC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1131EDF122297D0A00D7DBC7 /* MockPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistenceService.swift; sourceTree = "<group>"; };
-		1131EDF322297D4500D7DBC7 /* Note+EqualContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+EqualContents.swift"; sourceTree = "<group>"; };
 		113E55162223EC740052F631 /* UIStackView+ArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+ArrangedSubviews.swift"; sourceTree = "<group>"; };
 		113E55182223F23E0052F631 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
 		113E551D22252E1D0052F631 /* EdgesAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesAnchor.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				1131EDF122297D0A00D7DBC7 /* MockPersistenceService.swift */,
-				1131EDF322297D4500D7DBC7 /* Note+EqualContents.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -426,7 +423,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1131EDF422297D4500D7DBC7 /* Note+EqualContents.swift in Sources */,
 				1131EDEA2229772B00D7DBC7 /* NoteStorageTests.swift in Sources */,
 				1131EDF222297D0A00D7DBC7 /* MockPersistenceService.swift in Sources */,
 			);
