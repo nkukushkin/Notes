@@ -58,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11072A46222FE32600CF5BAA /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		110A209E222867BF0055A19C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		110A20A1222868520055A19C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1131EDD622295E3600D7DBC7 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 		83B6942022118C1E0078B959 = {
 			isa = PBXGroup;
 			children = (
+				11072A46222FE32600CF5BAA /* Readme.md */,
 				83B6942B22118C1E0078B959 /* Notes */,
 				1131EDE82229772B00D7DBC7 /* NotesTests */,
 				83B6942A22118C1E0078B959 /* Products */,
