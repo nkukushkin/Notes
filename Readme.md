@@ -24,4 +24,4 @@ Memory management with this approach is trivial, coordinators are strongly held 
 ### Reading
 
 - Soroush Khanlou’s [Coordinators Redux](http://khanlou.com/2015/10/coordinators-redux).  
-- Dave Delongs’s [A Better MVC](https://davedelong.com/blog/2017/11/06/a-better-mvc-part-1-the-problems/).
+- Dave Delong’s [A Better MVC](https://davedelong.com/blog/2017/11/06/a-better-mvc-part-1-the-problems/).
