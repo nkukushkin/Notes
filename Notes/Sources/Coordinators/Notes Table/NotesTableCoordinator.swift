@@ -5,20 +5,18 @@ import UIKit
  and EmptyStateViewController, depending on whether there are any notes to show.
  */
 class NotesTableCoordinator: Coordinator {
-    struct ViewData {
-        let notes: [Note]
-
-        enum Mode {
-            case emptyState
-            case notesTable
-        }
-
-        var mode: Mode {
-            return notes.isEmpty ? .emptyState : .notesTable
-        }
+    enum ViewData {
+        case empty
+        case notes([Note])
 
         init(notes: [Note]) {
-            self.notes = notes.sorted { $0.dateOfCreation > $1.dateOfCreation }
+            if notes.isEmpty {
+                self = .empty
+            } else {
+                let sortedNotes = notes
+                    .sorted { $0.dateOfCreation > $1.dateOfCreation }
+                self = .notes(sortedNotes)
+            }
         }
     }
 
@@ -47,33 +45,22 @@ class NotesTableCoordinator: Coordinator {
         }
     }
 
-    private weak var shownViewController: UIViewController!
+    private weak var embeddedViewController: UIViewController! {
+        didSet {
+            oldValue?.removeFromParentAndItsView()
+        }
+    }
 
-    // Since we don’t hold any strong references to embedded view controllers,
-    // once the `removeChildAndItsView(_:)` method is called, they are released from memory.
     private func updateShownViewController() {
-        if let notesTableViewController = notesTableViewController {
-            switch viewData.mode {
-            case .notesTable:
-                notesTableViewController.notes = viewData.notes
-            case .emptyState:
-                removeChildAndItsView(notesTableViewController)
-                showEmptyStateViewController()
+        switch viewData {
+        case let .notes(notes):
+            if let notesTableViewController = embeddedViewController as? NotesTableViewController {
+                notesTableViewController.notes = notes
+            } else {
+                showNotesTableViewController(with: notes)
             }
-        } else if let emptyStateViewController = emptyStateViewController {
-            switch viewData.mode {
-            case .notesTable:
-                removeChildAndItsView(emptyStateViewController)
-                showNotesTableViewController()
-            case .emptyState:
-                break // keep showing `emptyStateViewController`
-            }
-        } else {
-            // If we weren’t showing anything — show initial view controller.
-            switch viewData.mode {
-            case .notesTable:
-                showNotesTableViewController()
-            case .emptyState:
+        case .empty:
+            if !(embeddedViewController is EmptyStateViewController) {
                 showEmptyStateViewController()
             }
         }
@@ -82,29 +69,29 @@ class NotesTableCoordinator: Coordinator {
     // MARK: - Notes Table
 
     private var notesTableViewController: NotesTableViewController? {
-        return shownViewController as? NotesTableViewController
+        return embeddedViewController as? NotesTableViewController
     }
 
-    func showNotesTableViewController() {
-        let notesTableViewController = NotesTableViewController(notes: viewData.notes)
+    func showNotesTableViewController(with notes: [Note]) {
+        let notesTableViewController = NotesTableViewController(notes: notes)
         notesTableViewController.noteSelectedHanlder = noteSelectedHanlder
         notesTableViewController.noteDeletedHandler = noteDeletedHandler
 
-        shownViewController = notesTableViewController
+        embeddedViewController = notesTableViewController
         embedChild(notesTableViewController, in: view)
     }
 
     // MARK: - Empty State
 
     private var emptyStateViewController: EmptyStateViewController? {
-        return shownViewController as? EmptyStateViewController
+        return embeddedViewController as? EmptyStateViewController
     }
 
     func showEmptyStateViewController() {
         let emptyStateViewController = EmptyStateViewController()
         emptyStateViewController.addNewNoteHandler = addNewNoteHandler
 
-        shownViewController = emptyStateViewController
+        embeddedViewController = emptyStateViewController
         embedChild(emptyStateViewController, in: view)
     }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		110A209F222867BF0055A19C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110A209D222867BF0055A19C /* Localizable.strings */; };
 		110A20A2222868520055A19C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110A20A0222868520055A19C /* InfoPlist.strings */; };
+		1123BAFE226DE66600094518 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123BAFD226DE66600094518 /* AppDependencies.swift */; };
 		1131EDD722295E3600D7DBC7 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131EDD622295E3600D7DBC7 /* Observable.swift */; };
 		1131EDD92229617800D7DBC7 /* Observable+ScopedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131EDD82229617800D7DBC7 /* Observable+ScopedToken.swift */; };
 		1131EDDC2229749900D7DBC7 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131EDDB2229749900D7DBC7 /* PersistenceService.swift */; };
@@ -60,6 +61,7 @@
 		11072A46222FE32600CF5BAA /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		110A209E222867BF0055A19C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		110A20A1222868520055A19C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1123BAFD226DE66600094518 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		1131EDD622295E3600D7DBC7 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1131EDD82229617800D7DBC7 /* Observable+ScopedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+ScopedToken.swift"; sourceTree = "<group>"; };
 		1131EDDB2229749900D7DBC7 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			children = (
 				83B6942C22118C1E0078B959 /* AppDelegate.swift */,
 				83B6944122118C800078B959 /* AppCoordinator.swift */,
+				1123BAFD226DE66600094518 /* AppDependencies.swift */,
 				11A493E7221AE0BB004B4E01 /* Coordinators */,
 				83B6944E2211944A0078B959 /* Model */,
 				8327F8BF2216B0B2004CEE01 /* Library */,
@@ -456,6 +459,7 @@
 				11A493EC221AEAB2004B4E01 /* EmojiCollectionViewLayout.swift in Sources */,
 				83B6945E2212EC6E0078B959 /* NKTextView.swift in Sources */,
 				116CE4C5221EA7B000E6AA29 /* UIViewController+Swizzle.swift in Sources */,
+				1123BAFE226DE66600094518 /* AppDependencies.swift in Sources */,
 				11BF9D742221C6C600CDEC51 /* UIFont+SymbolicTraits.swift in Sources */,
 				116CE4BE221D65BA00E6AA29 /* Emojis.swift in Sources */,
 				83B6944422118CE40078B959 /* Note.swift in Sources */,

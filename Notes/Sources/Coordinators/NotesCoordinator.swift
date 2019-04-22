@@ -1,7 +1,7 @@
 import UIKit
 
 class NotesCoordinator: Coordinator {
-    private lazy var rootNavigationController: UINavigationController = {
+    private lazy var embeddedNavigationController: UINavigationController = {
         let navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
         return navigationController
@@ -40,7 +40,7 @@ class NotesCoordinator: Coordinator {
         notesTableCoordinator.navigationItem.rightBarButtonItem = newNoteBarButtonItem
 
         self.notesTableCoordinator = notesTableCoordinator
-        rootNavigationController.pushViewController(notesTableCoordinator, animated: true)
+        embeddedNavigationController.pushViewController(notesTableCoordinator, animated: true)
     }
 
     // MARK: - New Note
@@ -81,7 +81,10 @@ class NotesCoordinator: Coordinator {
     private weak var noteEditorCoordinator: NoteEditorCoordinator?
 
     private func showNoteEditorCoordinator(for note: Note) {
-        let noteEditorCoordinator = NoteEditorCoordinator(note: note)
+        let noteEditorCoordinator = NoteEditorCoordinator(
+            note: note,
+            navigationController: embeddedNavigationController
+        )
 
         noteEditorCoordinator.navigationItem.rightBarButtonItem = deleteEditedNoteBarButtonItem
         noteEditorCoordinator.navigationItem.largeTitleDisplayMode = .never
@@ -91,7 +94,7 @@ class NotesCoordinator: Coordinator {
         }
 
         self.noteEditorCoordinator = noteEditorCoordinator
-        rootNavigationController.pushViewController(noteEditorCoordinator, animated: true)
+        embeddedNavigationController.pushViewController(noteEditorCoordinator, animated: true)
     }
 
     // MARK: - Observation
@@ -110,7 +113,7 @@ class NotesCoordinator: Coordinator {
 
         // Pop note editor if the note it’s editing gets deleted.
         if let editedNote = editedNote, !newNotes.contains(editedNote) {
-            rootNavigationController.popToViewController(notesTableCoordinator, animated: true)
+            embeddedNavigationController.popToViewController(notesTableCoordinator, animated: true)
         }
     }
 
@@ -118,7 +121,7 @@ class NotesCoordinator: Coordinator {
 
     override func loadView() {
         super.loadView()
-        embedChild(rootNavigationController, in: view)
+        embedChild(embeddedNavigationController, in: view)
         showNotesTableCoordinator()
     }
 

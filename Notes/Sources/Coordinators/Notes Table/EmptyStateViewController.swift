@@ -36,18 +36,18 @@ class EmptyStateViewController: UIViewController {
     private func setupUserInterface() {
         view.backgroundColor = .white
 
-        let stack = UIStackView(arrangedSubviews: [label, newNoteButton])
-        stack.axis = .vertical
-        stack.spacing = 4
+        let stackView = UIStackView(arrangedSubviews: [label, newNoteButton])
+        stackView.axis = .vertical
+        stackView.spacing = 4
 
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stack)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
         let guide = view.layoutMarginsGuide
         NSLayoutConstraint.activate(
-            stack.edgesAnchor.constraints(lessThanOrEqualTo: guide.edgesAnchor)
+            stackView.edgesAnchor.constraints(lessThanOrEqualTo: guide.edgesAnchor)
             + [
-                stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                stack.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+                stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ]
         )
     }

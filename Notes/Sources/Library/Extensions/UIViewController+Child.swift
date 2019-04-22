@@ -12,7 +12,7 @@ extension UIViewController {
     ///   - addChildView: Closure that should add child’s view into the view hierarchy.
     func addChild(_ child: UIViewController, addChildView: (UIView) -> Void) {
         if child.parent != self {
-            child.parent?.removeChildAndItsView(child)
+            child.removeFromParentAndItsView()
             addChild(child)
             addChildView(child.view)
             child.didMove(toParent: self)
@@ -25,19 +25,15 @@ extension UIViewController {
     /// to the edges of the given container.
     func embedChild(_ child: UIViewController, in container: UIView) {
         addChild(child, addChildView: { childView in
-            childView.translatesAutoresizingMaskIntoConstraints = false
-            childView.frame = container.bounds // helps with some UIViewController smarts
+            childView.frame = container.bounds
+            childView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             container.addSubview(childView)
-            NSLayoutConstraint.activate(
-                childView.edgesAnchor.constraints(equalTo: container.edgesAnchor)
-            )
         })
     }
 
-    func removeChildAndItsView(_ child: UIViewController) {
-        guard child.parent == self else { return }
-        child.willMove(toParent: nil)
-        child.viewIfLoaded?.removeFromSuperview()
-        child.removeFromParent()
+    func removeFromParentAndItsView() {
+        willMove(toParent: nil)
+        viewIfLoaded?.removeFromSuperview()
+        removeFromParent()
     }
 }

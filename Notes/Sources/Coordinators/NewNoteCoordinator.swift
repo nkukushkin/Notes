@@ -6,10 +6,10 @@ import UIKit
  note that will be edited by the child coordinator.
 
  This coordinator assumes that it will be presented modally, so it
- embeds it’s own root navigation controller.
+ embeds it’s own embedded navigation controller.
  */
 class NewNoteCoordinator: Coordinator {
-    private lazy var rootNavigationController = UINavigationController()
+    private lazy var embeddedNavigationController = UINavigationController()
 
     var didCreateNoteHandler: ((Note) -> Void)?
     var cancelHandler: (() -> Void)?
@@ -47,7 +47,10 @@ class NewNoteCoordinator: Coordinator {
 
     private func showNoteEditorCoordinator() {
         let newNote = Note(icon: "📝", title: "", body: "")
-        let noteEditorCoordinator = NoteEditorCoordinator(note: newNote)
+        let noteEditorCoordinator = NoteEditorCoordinator(
+            note: newNote,
+            navigationController: embeddedNavigationController
+        )
 
         let noteEditorNavigationItem = noteEditorCoordinator.navigationItem
         noteEditorNavigationItem.title = LocalizedStrings.newNoteEditorTitle
@@ -55,14 +58,14 @@ class NewNoteCoordinator: Coordinator {
         noteEditorNavigationItem.rightBarButtonItem = doneBarButtonItem
 
         self.noteEditorCoordinator = noteEditorCoordinator
-        rootNavigationController.pushViewController(noteEditorCoordinator, animated: false)
+        embeddedNavigationController.pushViewController(noteEditorCoordinator, animated: false)
     }
 
     // MARK: - View Lifecycle
 
     override func loadView() {
         super.loadView()
-        embedChild(rootNavigationController, in: view)
+        embedChild(embeddedNavigationController, in: view)
         showNoteEditorCoordinator()
     }
 }

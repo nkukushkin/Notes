@@ -16,7 +16,7 @@ class NotesTableViewController: UITableViewController {
     // MARK: - View Lifecycle
 
     private func setupTableView() {
-        tableView.tableFooterView = UIView() // remove extra separators
+        tableView.tableFooterView = UIView() // removes extra separators
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: noteCellIdentifier)
     }
 

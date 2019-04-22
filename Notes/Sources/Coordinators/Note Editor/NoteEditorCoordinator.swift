@@ -4,10 +4,10 @@ import UIKit
  NoteEditorCoordinator manages the flow between NoteEditorViewController
  and EmojiPickerViewController, where user can tap an emoji in the former and
  choose a new one in the latter.
-
- This cooridnator assumes that it’s contained in a UINavigationController.
  */
 class NoteEditorCoordinator: Coordinator {
+    private var inheritedNavigationController: UINavigationController
+
     private(set) var note: Note {
         didSet {
             noteEditorViewController.setNote(note)
@@ -46,10 +46,10 @@ class NoteEditorCoordinator: Coordinator {
         emojiPickerViewController.didPickEmojiHandler = { [weak self] emoji in
             guard let self = self else { return }
             self.note.emoji = emoji
-            self.navigationController?.popViewController(animated: true)
+            self.inheritedNavigationController.popViewController(animated: true)
         }
 
-        navigationController?.pushViewController(emojiPickerViewController, animated: true)
+        inheritedNavigationController.pushViewController(emojiPickerViewController, animated: true)
     }
 
     // MARK: - View Lifecycle
@@ -61,8 +61,9 @@ class NoteEditorCoordinator: Coordinator {
 
     // MARK: - Initialization
 
-    init(note: Note) {
+    init(note: Note, navigationController: UINavigationController) {
         self.note = note
+        self.inheritedNavigationController = navigationController
         super.init()
     }
 }
